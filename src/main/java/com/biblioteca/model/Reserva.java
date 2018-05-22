@@ -12,11 +12,11 @@ import java.util.Date;
  * @author re91528z
  */
 public class Reserva {
-  public int idReserva;
-  public Date Datasolicitada;
-  public int Estadoreserva;
-  public int livroReservado;
-  public int Solicitante;
+  private int idReserva;
+  private Date datasSolicitada;
+  private int estadoReserva;
+  private int livroReservado;
+  private int Solicitante;
 
     /**
      * @return the idReserva
@@ -33,31 +33,31 @@ public class Reserva {
     }
 
     /**
-     * @return the Datasolicitada
+     * @return the datasSolicitada
      */
-    public Date getDatasolicitada() {
-        return Datasolicitada;
+    public Date getDatasSolicitada() {
+        return datasSolicitada;
     }
 
     /**
-     * @param Datasolicitada the Datasolicitada to set
+     * @param datasSolicitada the datasSolicitada to set
      */
-    public void setDatasolicitada(Date Datasolicitada) {
-        this.Datasolicitada = Datasolicitada;
+    public void setDatasSolicitada(Date datasSolicitada) {
+        this.datasSolicitada = datasSolicitada;
     }
 
     /**
-     * @return the Estadoreserva
+     * @return the estadoReserva
      */
-    public int getEstadoreserva() {
-        return Estadoreserva;
+    public int getEstadoReserva() {
+        return estadoReserva;
     }
 
     /**
-     * @param Estadoreserva the Estadoreserva to set
+     * @param estadoReserva the estadoReserva to set
      */
-    public void setEstadoreserva(int Estadoreserva) {
-        this.Estadoreserva = Estadoreserva;
+    public void setEstadoReserva(int estadoReserva) {
+        this.estadoReserva = estadoReserva;
     }
 
     /**
@@ -87,4 +87,5 @@ public class Reserva {
     public void setSolicitante(int Solicitante) {
         this.Solicitante = Solicitante;
     }
+
 }

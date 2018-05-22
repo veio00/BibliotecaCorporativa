@@ -11,22 +11,22 @@ package com.biblioteca.model;
  */
 public class Forum {
     
-  public int Idforum;
+  public int idForum;
   public String Descricao;
   public int ISBNref;
 
     /**
-     * @return the Idforum
+     * @return the idForum
      */
-    public int getIdforum() {
-        return Idforum;
+    public int getIdForum() {
+        return idForum;
     }
 
     /**
-     * @param Idforum the Idforum to set
+     * @param idForum the idForum to set
      */
-    public void setIdforum(int Idforum) {
-        this.Idforum = Idforum;
+    public void setIdForum(int idForum) {
+        this.idForum = idForum;
     }
 
     /**

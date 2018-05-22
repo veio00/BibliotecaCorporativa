@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Emprestado {
     
-  public int IdEmprestimo;
+  public int idEmprestimo;
   public String localLivro;
   public Date Devolucao;
   public Date Retirada;
@@ -21,17 +21,17 @@ public class Emprestado {
   public int livroRetirado;
 
     /**
-     * @return the IdEmprestimo
+     * @return the idEmprestimo
      */
     public int getIdEmprestimo() {
-        return IdEmprestimo;
+        return idEmprestimo;
     }
 
     /**
-     * @param IdEmprestimo the IdEmprestimo to set
+     * @param idEmprestimo the idEmprestimo to set
      */
-    public void setIdEmprestimo(int IdEmprestimo) {
-        this.IdEmprestimo = IdEmprestimo;
+    public void setIdEmprestimo(int idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
     }
 
     /**

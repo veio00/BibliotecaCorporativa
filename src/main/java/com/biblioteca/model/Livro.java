@@ -10,24 +10,24 @@ package com.biblioteca.model;
  * @author re91528z
  */
 public class Livro {
-  public int Idlivro;
-  public int ISBN;
-  public String Condicao;
-  public int Liberacao;
-  public int Usuario;
+  private int idlivro;
+  private int ISBN;
+  private String Condicao;
+  private int Liberacao;
+  private int Usuario;
 
     /**
-     * @return the Idlivro
+     * @return the idlivro
      */
     public int getIdlivro() {
-        return Idlivro;
+        return idlivro;
     }
 
     /**
-     * @param Idlivro the Idlivro to set
+     * @param idlivro the idlivro to set
      */
-    public void setIdlivro(int Idlivro) {
-        this.Idlivro = Idlivro;
+    public void setIdlivro(int idlivro) {
+        this.idlivro = idlivro;
     }
 
     /**
@@ -85,6 +85,6 @@ public class Livro {
     public void setUsuario(int Usuario) {
         this.Usuario = Usuario;
     }
-  
+
     
 }

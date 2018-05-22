@@ -11,23 +11,23 @@ package com.biblioteca.model;
  */
 public class Funcionario {
     
- public int  IdFuncionario;
+ public int  idFuncionario;
  public String Nome;
  public String Re;
  public int Exp;
 
     /**
-     * @return the IdFuncionario
+     * @return the idFuncionario
      */
-    public int getIdFuncionario() {
-        return IdFuncionario;
+    public int getidFuncionario() {
+        return idFuncionario;
     }
 
     /**
-     * @param IdFuncionario the IdFuncionario to set
+     * @param idFuncionario the IdFuncionario to set
      */
-    public void setIdFuncionario(int IdFuncionario) {
-        this.IdFuncionario = IdFuncionario;
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 
     /**

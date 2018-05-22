@@ -12,52 +12,52 @@ import java.util.Date;
  * @author re91528z
  */
 public class Comentario {
-  public int Idcomentario;
-  public String mensagem;
-  public Date comentado;
+  public int idComentario;
+  public String Mensagem;
+  public Date Comentado;
   public int Comentarista;
   public int doForum;
 
     /**
-     * @return the Idcomentario
+     * @return the idComentario
      */
-    public int getIdcomentario() {
-        return Idcomentario;
+    public int getIdComentario() {
+        return idComentario;
     }
 
     /**
-     * @param Idcomentario the Idcomentario to set
+     * @param idComentario the idComentario to set
      */
-    public void setIdcomentario(int Idcomentario) {
-        this.Idcomentario = Idcomentario;
+    public void setIdComentario(int idComentario) {
+        this.idComentario = idComentario;
     }
 
     /**
-     * @return the mensagem
+     * @return the Mensagem
      */
     public String getMensagem() {
-        return mensagem;
+        return Mensagem;
     }
 
     /**
-     * @param mensagem the mensagem to set
+     * @param Mensagem the Mensagem to set
      */
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+    public void setMensagem(String Mensagem) {
+        this.Mensagem = Mensagem;
     }
 
     /**
-     * @return the comentado
+     * @return the Comentado
      */
     public Date getComentado() {
-        return comentado;
+        return Comentado;
     }
 
     /**
-     * @param comentado the comentado to set
+     * @param Comentado the Comentado to set
      */
-    public void setComentado(Date comentado) {
-        this.comentado = comentado;
+    public void setComentado(Date Comentado) {
+        this.Comentado = Comentado;
     }
 
     /**
