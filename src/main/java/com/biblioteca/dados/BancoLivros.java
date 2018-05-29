@@ -1,0 +1,89 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.biblioteca.dados;
+
+import com.biblioteca.conexao.ConexaoBanco;
+import static com.biblioteca.conexao.ConexaoBanco.executeQuery;
+import com.biblioteca.model.Livro;
+import com.google.gson.Gson;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ *
+ * @author re91529z
+ */
+public class BancoLivros {
+
+    public static ArrayList<Livro> carrega_Livros() throws SQLException {
+
+        ArrayList<Livro> lista = new ArrayList<>();
+        ResultSet rset = executeQuery("Select * from Livro");
+
+        Gson g = new Gson();
+
+        while (rset.next()) {
+            
+            Livro l = new Livro();
+            l.setIdlivro(rset.getInt("idlivro"));
+            l.setISBN(rset.getInt("ISBN"));
+            l.setCondicao(rset.getString("Condicao"));
+            l.setLiberacao(rset.getInt("Liberacao"));
+            l.setUsuario(rset.getInt("Usuario"));
+            lista.add(l);
+
+        }
+
+        return lista;
+    }
+    
+    public static ArrayList<Livro> carrega_Livros(int Funcionario) throws SQLException {
+
+        ArrayList<Livro> lista = new ArrayList<>();
+        ResultSet rset = executeQuery("Select * from Livro where Usuario = "+Funcionario+"");
+
+        Gson g = new Gson();
+
+        while (rset.next()) {
+            
+            Livro l = new Livro();
+            l.setIdlivro(rset.getInt("idlivro"));
+            l.setISBN(rset.getInt("ISBN"));
+            l.setCondicao(rset.getString("Condicao"));
+            l.setLiberacao(rset.getInt("Liberacao"));
+            l.setUsuario(rset.getInt("Usuario"));
+            lista.add(l);
+
+        }
+
+        return lista;
+    }
+
+
+    public static boolean salva_Livros(Livro livro) throws SQLException {
+        
+         return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values ("+livro.getISBN()+",'"+livro.getCondicao()+"',"+livro.getLiberacao()+","+livro.getUsuario()+")");
+ 
+    }
+    
+    public static boolean altera_Livros(Livro livro) throws SQLException {
+        
+         return ConexaoBanco.executeCommand("update Livro set ISBN = "+livro.getISBN()+",Condicao='"+livro.getCondicao()+"',Liberacao="+livro.getLiberacao()+",Usuario="+livro.getUsuario()+"  where idLivro= "+livro.getIdlivro()+"");
+ 
+    }
+    
+    public static boolean exclui_Livros(int id) throws SQLException {
+        
+         return ConexaoBanco.executeCommand("delete from Livro where idLivro = "+id+"");
+ 
+    }
+}

@@ -5,12 +5,20 @@
  */
 package com.biblioteca.conexao;
 
+import com.biblioteca.model.Livro;
+import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.Iterator;
+import java.util.List;
 import org.springframework.boot.autoconfigure.jersey.JerseyAutoConfiguration;
+import static org.springframework.core.convert.TypeDescriptor.array;
 
 /**
  *
@@ -24,23 +32,6 @@ public class ConexaoBanco {
     private static String usuario = "travelusr";
     private static String senha = "travel";
 
-    private static ConexaoBanco Banco = null;
-
-//    private ConexaoBanco() {
-//        try {
-//            Class.forName(driver);
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    public static ConexaoBanco getInstance() {
-//        if (Banco == null) {
-//            Banco = new ConexaoBanco();
-//        }
-//
-//        return Banco;
-//    }
     private static Connection open() throws SQLException {
         Connection conn = null;
         try {
@@ -54,29 +45,29 @@ public class ConexaoBanco {
         return null;
     }
 
-    private static void close(Connection conn) throws SQLException {
+    public static void close(Connection conn) throws SQLException {
         conn.close();
     }
 
-    public static ResultSet executeQuery(String sql) {
+    public static ResultSet executeQuery(String sql) throws SQLException {
+
         try {
+
             Connection conn = open();
             PreparedStatement pstm = conn.prepareStatement(sql);
             ResultSet rset = pstm.executeQuery();
-            close(conn);
             return rset;
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
-  
+
     }
 
-    public static void main(String[] args) throws SQLException {
-
-        ResultSet rs=  executeQuery("Select * from Livro");
-        
-        System.out.println(rs);
-
+    public static boolean executeCommand(String sql) throws SQLException {
+        Connection conn = open();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        return pstm.executeUpdate() > 0;
     }
 }

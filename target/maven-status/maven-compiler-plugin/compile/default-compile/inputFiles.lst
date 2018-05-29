@@ -1,3 +1,10 @@
-F:\BibliotecaCorporativa\src\main\java\com\biblioteca\bibliotecacorporativa\Api.java
-F:\BibliotecaCorporativa\src\main\java\com\biblioteca\bibliotecacorporativa\LivroController.java
-F:\BibliotecaCorporativa\src\main\java\com\biblioteca\conexao\ConexaoBanco.java
+F:\Biblioteca\src\main\java\com\biblioteca\model\Livro.java
+F:\Biblioteca\src\main\java\com\biblioteca\model\Emprestado.java
+F:\Biblioteca\src\main\java\com\biblioteca\bibliotecacorporativa\Api.java
+F:\Biblioteca\src\main\java\com\biblioteca\model\Reserva.java
+F:\Biblioteca\src\main\java\com\biblioteca\bibliotecacorporativa\LivroController.java
+F:\Biblioteca\src\main\java\com\biblioteca\model\Comentario.java
+F:\Biblioteca\src\main\java\com\biblioteca\model\Funcionario.java
+F:\Biblioteca\src\main\java\com\biblioteca\conexao\ConexaoBanco.java
+F:\Biblioteca\src\main\java\com\biblioteca\model\Forum.java
+F:\Biblioteca\src\main\java\com\biblioteca\dados\BancoLivros.java

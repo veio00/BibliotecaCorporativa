@@ -6,10 +6,24 @@
 package com.biblioteca.bibliotecacorporativa;
 
 import com.biblioteca.conexao.ConexaoBanco;
+import static com.biblioteca.conexao.ConexaoBanco.executeQuery;
+import static com.biblioteca.dados.BancoLivros.*;
+import com.biblioteca.model.Livro;
+import com.google.gson.Gson;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,19 +32,37 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LivroController {
-    
-    
-        // será acessivel pela URL: http://localhost:8080/livro/Andre
-    @GetMapping("/livro/{nome}")
-    public String getLivros(@PathVariable("nome") String nome) {
-       
-        
-        return nome;
-    }
-    
-    @GetMapping("/conexao")
 
-    public String getConexao() {        
-        return "foi";
+    // será acessivel pela URL: http://localhost:8080/livro
+    @GetMapping("/livro")
+    public ArrayList<Livro> carregaLivros() throws SQLException {
+        return carrega_Livros();
     }
+
+    // será acessivel pela URL: http://localhost:8080/livro/1
+
+    @GetMapping("/livro/{Funcionario}")
+    public ArrayList<Livro> carregaLivros(@PathVariable("Funcionario") int Funcionario) throws SQLException {
+
+        return carrega_Livros(Funcionario);
+    }
+
+    @RequestMapping(value = "/salvaLivro", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean salvaLivros(@RequestBody Livro livro) throws SQLException {
+
+        return salva_Livros(livro);
+    }
+
+    @RequestMapping(value = "/alteraLivro", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean alteraLivros(@RequestBody Livro livro) throws SQLException {
+
+        return altera_Livros(livro);
+    }
+
+    @DeleteMapping("/excluiLivro/{id}")
+    public boolean excluiLivros(@PathVariable("id") int id) throws SQLException {
+
+        return exclui_Livros(id);
+    }
+
 }
