@@ -5,10 +5,36 @@
  */
 package com.biblioteca.bibliotecacorporativa;
 
+import static com.biblioteca.dados.BancoComentario.salva_Comentario;
+import static com.biblioteca.dados.BancoForum.carrega_Forum;
+import static com.biblioteca.dados.BancoFuncionario.carrega_Funcionario;
+import static com.biblioteca.dados.BancoFuncionario.salva_Funcionario;
+import com.biblioteca.model.Comentario;
+import com.biblioteca.model.Funcionario;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
  * @author re91529z
  */
+@RestController
 public class FuncionarioController {
+         // será acessivel pela URL: http://localhost:8080/forum
+    @GetMapping("/funcionario")
+    public ArrayList<Funcionario> carregaFuncionario() throws SQLException {
+        return carrega_Funcionario();
+    }
     
+   @RequestMapping(value = "/salvaFuncionario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean salvaFuncionario(@RequestBody Funcionario funcionario) throws SQLException {
+
+        return salva_Funcionario(funcionario);
+    }
 }

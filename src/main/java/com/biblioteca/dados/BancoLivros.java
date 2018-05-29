@@ -29,8 +29,6 @@ public class BancoLivros {
         ArrayList<Livro> lista = new ArrayList<>();
         ResultSet rset = executeQuery("Select * from Livro");
 
-        Gson g = new Gson();
-
         while (rset.next()) {
             
             Livro l = new Livro();

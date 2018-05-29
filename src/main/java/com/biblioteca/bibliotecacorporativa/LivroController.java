@@ -9,7 +9,6 @@ import com.biblioteca.conexao.ConexaoBanco;
 import static com.biblioteca.conexao.ConexaoBanco.executeQuery;
 import static com.biblioteca.dados.BancoLivros.*;
 import com.biblioteca.model.Livro;
-import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
