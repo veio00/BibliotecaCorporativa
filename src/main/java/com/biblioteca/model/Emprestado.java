@@ -15,8 +15,8 @@ public class Emprestado {
     
   public int idEmprestimo;
   public String localLivro;
-  public Date Devolucao;
-  public Date Retirada;
+  public String Devolucao;
+  public String Retirada;
   public int Retirante;
   public int livroRetirado;
 
@@ -51,28 +51,28 @@ public class Emprestado {
     /**
      * @return the Devolucao
      */
-    public Date getDevolucao() {
+    public String getDevolucao() {
         return Devolucao;
     }
 
     /**
      * @param Devolucao the Devolucao to set
      */
-    public void setDevolucao(Date Devolucao) {
+    public void setDevolucao(String Devolucao) {
         this.Devolucao = Devolucao;
     }
 
     /**
      * @return the Retirada
      */
-    public Date getRetirada() {
+    public String getRetirada() {
         return Retirada;
     }
 
     /**
      * @param Retirada the Retirada to set
      */
-    public void setRetirada(Date Retirada) {
+    public void setRetirada(String Retirada) {
         this.Retirada = Retirada;
     }
 
