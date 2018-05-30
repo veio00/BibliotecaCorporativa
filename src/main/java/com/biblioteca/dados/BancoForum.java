@@ -30,16 +30,14 @@ public class BancoForum {
             fr.setISBNref(rs.getInt("ISBNref"));
             lfr.add(fr);              
    
-            }
-             
+            } 
             return lfr;
-            
-             
+                       
     }
     
     public static boolean salva_Forum(Forum forum) throws SQLException {
 
-        return ConexaoBanco.executeCommand("Insert into Funcionario (Nome,Re,Exp) Values (" +forum.getDescricao()+ "'," + forum.getISBNref()+ ")");
+        return ConexaoBanco.executeCommand("Insert into Forum (Descricao,ISBNref) Values ('" +forum.getDescricao()+ "'," + forum.getISBNref()+ ")");
     }
     
 }

@@ -33,7 +33,7 @@ public class BancoComentario {
             Comentario  c = new Comentario ();
             c.setIdComentario(rs.getInt("idComentario"));
             c.setMensagem(rs.getString("Mensagem"));
-            c.setComentado(rs.getDate("Comentado"));
+            //c.setComentado(rs.getDate("Comentado"));
             c.setComentarista(rs.getInt("Comentarista"));
             c.setDoForum(rs.getInt("doForum"));
             le.add(c);
@@ -45,7 +45,7 @@ public class BancoComentario {
     
         public static boolean salva_Comentario(Comentario comentario) throws SQLException {
         
-         return ConexaoBanco.executeCommand("Insert into Comentario (Mensagem,Comentado,Comentarista,doForum) Values ("+comentario.getMensagem()+",'"+comentario.getComentado()+"',"+comentario.getComentarista()+","+comentario.getDoForum()+")");
+         return ConexaoBanco.executeCommand("Insert into Comentario (Mensagem,Comentarista,doForum) Values ('"+comentario.getMensagem()+"',"+comentario.getComentarista()+","+comentario.getDoForum()+")");
          
     }
     

@@ -27,8 +27,8 @@ public class BancoEmprestado {
             Emprestado e = new Emprestado();
             e.setIdEmprestimo(rs.getInt("idEmprestimo"));
             e.setLocalLivro(rs.getString("localLivro"));
-            e.setDevolucao(rs.getDate("Devolucao"));
-            e.setRetirada(rs.getDate("Retirada"));
+           // e.setDevolucao(rs.getDate("Devolucao"));
+           // e.setRetirada(rs.getDate("Retirada"));
             e.setRetirante(rs.getInt("Retirante"));
             e.setLivroRetirado(rs.getInt("livroRetirado"));
             le.add(e);
@@ -40,8 +40,8 @@ public class BancoEmprestado {
 
     public static boolean salva_Emprestado(Emprestado emprestado) throws SQLException {
 
-        return ConexaoBanco.executeCommand("Insert into Emprestado (localLivro,Devolucao,Retirada,Retirante,livroRetirado) Values (" + emprestado.getLocalLivro()
-                + ",'" + emprestado.getDevolucao() + "'," + emprestado.getRetirada() + "," + emprestado.getRetirante() + "'," + emprestado.getLivroRetirado() + ")");
+        return ConexaoBanco.executeCommand("Insert into Emprestado (localLivro,Devolucao,Retirada,Retirante,livroRetirado) Values ('" + emprestado.getLocalLivro()
+                +"'," + emprestado.getRetirante() + "," + emprestado.getLivroRetirado() + ")");
     }
 
 }

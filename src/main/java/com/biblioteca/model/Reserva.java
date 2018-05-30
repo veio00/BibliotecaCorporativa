@@ -5,6 +5,8 @@
  */
 package com.biblioteca.model;
 
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,7 +15,7 @@ import java.util.Date;
  */
 public class Reserva {
   private int idReserva;
-  private Date datasSolicitada;
+  private String datasSolicitada;
   private int estadoReserva;
   private int livroReservado;
   private int Solicitante;
@@ -35,14 +37,14 @@ public class Reserva {
     /**
      * @return the datasSolicitada
      */
-    public Date getDatasSolicitada() {
+    public String getDatasSolicitada() {
         return datasSolicitada;
     }
 
     /**
      * @param datasSolicitada the datasSolicitada to set
      */
-    public void setDatasSolicitada(Date datasSolicitada) {
+    public void setDatasSolicitada(String datasSolicitada) {
         this.datasSolicitada = datasSolicitada;
     }
 
@@ -86,6 +88,10 @@ public class Reserva {
      */
     public void setSolicitante(int Solicitante) {
         this.Solicitante = Solicitante;
+    }
+
+    public void set(java.sql.Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

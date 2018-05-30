@@ -34,7 +34,7 @@ public class ComentarioController {
     
     @RequestMapping(value = "/salvaComentario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean salvaComentario(@RequestBody Comentario comentario) throws SQLException {
-
+        
         return salva_Comentario(comentario);
     }
 
