@@ -14,7 +14,7 @@ import java.util.Date;
 public class Comentario {
   public int idComentario;
   public String Mensagem;
-  public Date Comentado;
+  public String Comentado;
   public int Comentarista;
   public int doForum;
 
@@ -49,14 +49,14 @@ public class Comentario {
     /**
      * @return the Comentado
      */
-    public Date getComentado() {
+    public String getComentado() {
         return Comentado;
     }
 
     /**
      * @param Comentado the Comentado to set
      */
-    public void setComentado(Date Comentado) {
+    public void setComentado(String Comentado) {
         this.Comentado = Comentado;
     }
 
