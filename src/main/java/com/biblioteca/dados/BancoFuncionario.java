@@ -38,7 +38,19 @@ public class BancoFuncionario {
 
     public static boolean salva_Funcionario(Funcionario funcionario) throws SQLException {
 
-        return ConexaoBanco.executeCommand("Insert into Funcionario (Nome,Re,Exp) Values ('" +funcionario.getNome() + "','" + funcionario.getRe() + "'," + funcionario.getExp() + ")");
+        return ConexaoBanco.executeCommand("Insert into Funcionario (Nome,Re,Exp) Values ('" + funcionario.getNome() + "','" + funcionario.getRe() + "'," + funcionario.getExp() + ")");
+    }
+
+    public static boolean altera_Funcionario(Funcionario funcionario) throws SQLException {
+
+        return ConexaoBanco.executeCommand("update Funcionario set Nome = '" + funcionario.getNome() + "', Re= '" + funcionario.getRe() + "', Exp=" + funcionario.getExp() + "  where idFuncionario=" + funcionario.getidFuncionario() + "");
+
+    }
+
+    public static boolean exclui_Funcionario(int id) throws SQLException {
+
+        return ConexaoBanco.executeCommand("delete from Funcionario where idFuncionario =  " + id + "");
+
     }
 
 }

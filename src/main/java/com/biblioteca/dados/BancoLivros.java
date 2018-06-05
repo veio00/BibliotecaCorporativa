@@ -30,9 +30,9 @@ public class BancoLivros {
         ResultSet rset = executeQuery("Select * from Livro");
 
         while (rset.next()) {
-            
+
             Livro l = new Livro();
-            l.setIdlivro(rset.getInt("idlivro"));
+            l.setIdlivro(rset.getInt("idLivro"));
             l.setISBN(rset.getInt("ISBN"));
             l.setCondicao(rset.getString("Condicao"));
             l.setLiberacao(rset.getInt("Liberacao"));
@@ -43,18 +43,16 @@ public class BancoLivros {
 
         return lista;
     }
-    
+
     public static ArrayList<Livro> carrega_Livros(int Funcionario) throws SQLException {
 
         ArrayList<Livro> lista = new ArrayList<>();
-        ResultSet rset = executeQuery("Select * from Livro where Usuario = "+Funcionario+"");
-
-        Gson g = new Gson();
+        ResultSet rset = executeQuery("Select * from Livro where Usuario = " + Funcionario + "");
 
         while (rset.next()) {
-            
+
             Livro l = new Livro();
-            l.setIdlivro(rset.getInt("idlivro"));
+            l.setIdlivro(rset.getInt("idLivro"));
             l.setISBN(rset.getInt("ISBN"));
             l.setCondicao(rset.getString("Condicao"));
             l.setLiberacao(rset.getInt("Liberacao"));
@@ -66,22 +64,41 @@ public class BancoLivros {
         return lista;
     }
 
+    public static ArrayList<Livro> carrega_Livros_Esp(int livro) throws SQLException {
+
+        ArrayList<Livro> lista = new ArrayList<>();
+        ResultSet rset = executeQuery("Select * from Livro where idLivro = " + livro + "");
+
+        while (rset.next()) {
+
+            Livro l = new Livro();
+            l.setIdlivro(rset.getInt("idLivro"));
+            l.setISBN(rset.getInt("ISBN"));
+            l.setCondicao(rset.getString("Condicao"));
+            l.setLiberacao(rset.getInt("Liberacao"));
+            l.setUsuario(rset.getInt("Usuario"));
+            lista.add(l);
+
+        }
+
+            return lista;
+    }
 
     public static boolean salva_Livros(Livro livro) throws SQLException {
-        
-         return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values ("+livro.getISBN()+",'"+livro.getCondicao()+"',"+livro.getLiberacao()+","+livro.getUsuario()+")");
- 
+
+        return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values (" + livro.getISBN() + ",'" + livro.getCondicao() + "'," + livro.getLiberacao() + "," + livro.getUsuario() + ")");
+
     }
-    
+
     public static boolean altera_Livros(Livro livro) throws SQLException {
-        
-         return ConexaoBanco.executeCommand("update Livro set ISBN = "+livro.getISBN()+",Condicao='"+livro.getCondicao()+"',Liberacao="+livro.getLiberacao()+",Usuario="+livro.getUsuario()+"  where idLivro= "+livro.getIdlivro()+"");
- 
+
+        return ConexaoBanco.executeCommand("update Livro set ISBN = " + livro.getISBN() + ",Condicao='" + livro.getCondicao() + "',Liberacao=" + livro.getLiberacao() + ",Usuario=" + livro.getUsuario() + "  where idLivro= " + livro.getIdlivro() + "");
+
     }
-    
+  
     public static boolean exclui_Livros(int id) throws SQLException {
-        
-         return ConexaoBanco.executeCommand("delete from Livro where idLivro = "+id+"");
- 
+
+        return ConexaoBanco.executeCommand("update livro set Liberacao = 2 where idLivro = " + id + ")");
+
     }
 }

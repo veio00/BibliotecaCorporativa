@@ -41,7 +41,19 @@ public class BancoEmprestado {
     public static boolean salva_Emprestado(Emprestado emprestado) throws SQLException {
 
         return ConexaoBanco.executeCommand("Insert into Emprestado (localLivro,Devolucao,Retirada,Retirante,livroRetirado) Values ('" + emprestado.getLocalLivro()
-                +"','" + emprestado.getDevolucao()+"','"+ emprestado.getRetirada()+"'," + emprestado.getRetirante() + "," + emprestado.getLivroRetirado() + ")");
+                + "','" + emprestado.getDevolucao() + "','" + emprestado.getRetirada() + "'," + emprestado.getRetirante() + "," + emprestado.getLivroRetirado() + ")");
+    }
+
+    public static boolean altera_Emprestado(Emprestado emprestado) throws SQLException {
+
+        return ConexaoBanco.executeCommand("update Emprestado set localLivro= '" + emprestado.getLocalLivro() + "',Devolucao='" + emprestado.getDevolucao() + "', Retirada='" + emprestado.getRetirada() + "',Retirante= " + emprestado.getRetirante() + ", livroRetirado =" + emprestado.getLivroRetirado() + " where idEmprestimo=" + emprestado.getIdEmprestimo() + "");
+
+    }
+
+    public static boolean exclui_Emprestado(int id) throws SQLException {
+
+        return ConexaoBanco.executeCommand("delete from Emprestado where idEmprestimo = " + id + "");
+
     }
 
 }

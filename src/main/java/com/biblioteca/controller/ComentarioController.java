@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.biblioteca.bibliotecacorporativa;
+package com.biblioteca.controller;
 
+import com.biblioteca.dados.BancoComentario;
 import static com.biblioteca.dados.BancoComentario.carrega_Comentario;
 import static com.biblioteca.dados.BancoComentario.salva_Comentario;
 import static com.biblioteca.dados.BancoLivros.salva_Livros;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import static com.biblioteca.dados.BancoComentario.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -31,11 +35,23 @@ public class ComentarioController {
     public ArrayList<Comentario> carregaComentario() throws SQLException {
         return carrega_Comentario();
     }
-    
-    @RequestMapping(value = "/salvaComentario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+
+    @RequestMapping(value = "/salvaComentario", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean salvaComentario(@RequestBody Comentario comentario) throws SQLException {
-        
+
         return salva_Comentario(comentario);
+    }
+
+    @RequestMapping(value = "/alteraComentario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean alteraComentario(@RequestBody Comentario comentario) throws SQLException {
+
+        return altera_Comentario(comentario);
+    }
+
+    @DeleteMapping("/excluiComentario/{id}")
+    public boolean excluiComentario(@PathVariable("id") int id) throws SQLException {
+
+        return exclui_Comentario(id);
     }
 
 }
