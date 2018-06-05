@@ -97,8 +97,11 @@ public class BancoLivros {
     }
   
     public static boolean exclui_Livros(int id) throws SQLException {
-
-        return ConexaoBanco.executeCommand("update livro set Liberacao = 2 where idLivro = " + id + ")");
+        /*
+        Observação nesse contexto ocorre a atuaulização do campo definido campo liberação
+        */
+        
+        return ConexaoBanco.executeCommand("update livro set Liberacao = 2 where idLivro = " + id + "");
 
     }
 }
