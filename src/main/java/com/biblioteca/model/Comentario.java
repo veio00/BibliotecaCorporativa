@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public class Comentario {
   public int idComentario;
-  public String Mensagem;
-  public Date Comentado;
-  public int Comentarista;
+  public String mensagem;
+  public Date comentado;
+  public int comentarista;
   public int doForum;
 
     /**
@@ -33,45 +33,45 @@ public class Comentario {
     }
 
     /**
-     * @return the Mensagem
+     * @return the mensagem
      */
     public String getMensagem() {
-        return Mensagem;
+        return mensagem;
     }
 
     /**
-     * @param Mensagem the Mensagem to set
+     * @param mensagem the mensagem to set
      */
-    public void setMensagem(String Mensagem) {
-        this.Mensagem = Mensagem;
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     /**
-     * @return the Comentado
+     * @return the comentado
      */
     public Date getComentado() {
-        return Comentado;
+        return comentado;
     }
 
     /**
-     * @param Comentado the Comentado to set
+     * @param comentado the comentado to set
      */
-    public void setComentado(Date Comentado) {
-        this.Comentado = Comentado;
+    public void setComentado(Date comentado) {
+        this.comentado = comentado;
     }
 
     /**
-     * @return the Comentarista
+     * @return the comentarista
      */
     public int getComentarista() {
-        return Comentarista;
+        return comentarista;
     }
 
     /**
-     * @param Comentarista the Comentarista to set
+     * @param comentarista the comentarista to set
      */
-    public void setComentarista(int Comentarista) {
-        this.Comentarista = Comentarista;
+    public void setComentarista(int comentarista) {
+        this.comentarista = comentarista;
     }
 
     /**

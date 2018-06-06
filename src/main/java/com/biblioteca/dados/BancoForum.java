@@ -27,7 +27,7 @@ public class BancoForum {
             Forum fr = new Forum ();
             fr.setIdForum(rs.getInt("IdForum"));
             fr.setDescricao(rs.getString("Descricao"));
-            fr.setISBNref(rs.getInt("ISBNref"));
+            fr.setiSBNref(rs.getInt("ISBNref"));
             lfr.add(fr);              
    
             }
@@ -39,7 +39,7 @@ public class BancoForum {
     
     public static boolean salva_Forum(Forum forum) throws SQLException {
 
-        return ConexaoBanco.executeCommand("Insert into Funcionario (Nome,Re,Exp) Values (" +forum.getDescricao()+ "'," + forum.getISBNref()+ ")");
+        return ConexaoBanco.executeCommand("Insert into Funcionario (Nome,Re,Exp) Values (" +forum.getDescricao()+ "'," + forum.getiSBNref()+ ")");
     }
     
 }

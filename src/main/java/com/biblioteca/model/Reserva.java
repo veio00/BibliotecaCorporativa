@@ -16,7 +16,7 @@ public class Reserva {
   private Date datasSolicitada;
   private int estadoReserva;
   private int livroReservado;
-  private int Solicitante;
+  private int solicitante;
 
     /**
      * @return the idReserva
@@ -75,17 +75,17 @@ public class Reserva {
     }
 
     /**
-     * @return the Solicitante
+     * @return the solicitante
      */
     public int getSolicitante() {
-        return Solicitante;
+        return solicitante;
     }
 
     /**
-     * @param Solicitante the Solicitante to set
+     * @param solicitante the solicitante to set
      */
-    public void setSolicitante(int Solicitante) {
-        this.Solicitante = Solicitante;
+    public void setSolicitante(int solicitante) {
+        this.solicitante = solicitante;
     }
 
 }

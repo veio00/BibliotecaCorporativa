@@ -28,7 +28,7 @@ public class BancoReserva {
             {
             Reserva r = new Reserva();
             r.setIdReserva(rs.getInt("idReserva"));
-            r.setDatasSolicitada(rs.getDate("datasSolicitada"));
+            r.setDatasSolicitada(rs.getDate("dataSolicitada"));
             r.setEstadoReserva(rs.getInt("estadoReserva"));
             r.setLivroReservado(rs.getInt("livroReservado"));
             r.setSolicitante(rs.getInt("Solicitante"));
@@ -43,7 +43,7 @@ public class BancoReserva {
 
     public static boolean salva_Reserva(Reserva reserva) throws SQLException {
 
-        return ConexaoBanco.executeCommand("Insert into Reserva (datasSolicitada,estadoReserva,livroReservado,Solicitante) Values (" + reserva.getDatasSolicitada() + "'," + 
+        return ConexaoBanco.executeCommand("Insert into Reserva (dataSolicitada,estadoReserva,livroReservado,Solicitante) Values (" + reserva.getDatasSolicitada() + "'," + 
                 reserva.getEstadoReserva() + "," +reserva.getLivroReservado() + reserva.getLivroReservado()+reserva.getSolicitante() + ")");
     }
     

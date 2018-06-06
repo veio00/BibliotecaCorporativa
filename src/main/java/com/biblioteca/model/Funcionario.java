@@ -12,9 +12,9 @@ package com.biblioteca.model;
 public class Funcionario {
     
  public int  idFuncionario;
- public String Nome;
- public String Re;
- public int Exp;
+ public String nome;
+ public String re;
+ public int exp;
 
     /**
      * @return the idFuncionario
@@ -31,45 +31,45 @@ public class Funcionario {
     }
 
     /**
-     * @return the Nome
+     * @return the nome
      */
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     /**
-     * @param Nome the Nome to set
+     * @param nome the nome to set
      */
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
-     * @return the Re
+     * @return the re
      */
     public String getRe() {
-        return Re;
+        return re;
     }
 
     /**
-     * @param Re the Re to set
+     * @param re the re to set
      */
-    public void setRe(String Re) {
-        this.Re = Re;
+    public void setRe(String re) {
+        this.re = re;
     }
 
     /**
-     * @return the Exp
+     * @return the exp
      */
     public int getExp() {
-        return Exp;
+        return exp;
     }
 
     /**
-     * @param Exp the Exp to set
+     * @param exp the exp to set
      */
-    public void setExp(int Exp) {
-        this.Exp = Exp;
+    public void setExp(int exp) {
+        this.exp = exp;
     }
     
 }

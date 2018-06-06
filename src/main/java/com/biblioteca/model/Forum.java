@@ -12,8 +12,8 @@ package com.biblioteca.model;
 public class Forum {
     
   public int idForum;
-  public String Descricao;
-  public int ISBNref;
+  public String descricao;
+  public int iSBNref;
 
     /**
      * @return the idForum
@@ -30,31 +30,31 @@ public class Forum {
     }
 
     /**
-     * @return the Descricao
+     * @return the descricao
      */
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
 
     /**
-     * @param Descricao the Descricao to set
+     * @param descricao the descricao to set
      */
-    public void setDescricao(String Descricao) {
-        this.Descricao = Descricao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**
-     * @return the ISBNref
+     * @return the iSBNref
      */
-    public int getISBNref() {
-        return ISBNref;
+    public int getiSBNref() {
+        return iSBNref;
     }
 
     /**
-     * @param ISBNref the ISBNref to set
+     * @param iSBNref the iSBNref to set
      */
-    public void setISBNref(int ISBNref) {
-        this.ISBNref = ISBNref;
+    public void setiSBNref(int iSBNref) {
+        this.iSBNref = iSBNref;
     }
 
 }

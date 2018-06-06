@@ -15,9 +15,9 @@ public class Emprestado {
     
   public int idEmprestimo;
   public String localLivro;
-  public Date Devolucao;
-  public Date Retirada;
-  public int Retirante;
+  public Date devolucao;
+  public Date retirada;
+  public int retirante;
   public int livroRetirado;
 
     /**
@@ -49,45 +49,45 @@ public class Emprestado {
     }
 
     /**
-     * @return the Devolucao
+     * @return the devolucao
      */
     public Date getDevolucao() {
-        return Devolucao;
+        return devolucao;
     }
 
     /**
-     * @param Devolucao the Devolucao to set
+     * @param devolucao the devolucao to set
      */
-    public void setDevolucao(Date Devolucao) {
-        this.Devolucao = Devolucao;
+    public void setDevolucao(Date devolucao) {
+        this.devolucao = devolucao;
     }
 
     /**
-     * @return the Retirada
+     * @return the retirada
      */
     public Date getRetirada() {
-        return Retirada;
+        return retirada;
     }
 
     /**
-     * @param Retirada the Retirada to set
+     * @param retirada the retirada to set
      */
-    public void setRetirada(Date Retirada) {
-        this.Retirada = Retirada;
+    public void setRetirada(Date retirada) {
+        this.retirada = retirada;
     }
 
     /**
-     * @return the Retirante
+     * @return the retirante
      */
     public int getRetirante() {
-        return Retirante;
+        return retirante;
     }
 
     /**
-     * @param Retirante the Retirante to set
+     * @param retirante the retirante to set
      */
-    public void setRetirante(int Retirante) {
-        this.Retirante = Retirante;
+    public void setRetirante(int retirante) {
+        this.retirante = retirante;
     }
 
     /**
