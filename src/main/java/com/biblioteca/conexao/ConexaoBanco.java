@@ -32,7 +32,7 @@ public class ConexaoBanco {
     private static String usuario = "travelusr";
     private static String senha = "travel";
 
-    private static Connection open() throws SQLException {
+    public static Connection open() throws SQLException {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(connectionStr, usuario, senha);
@@ -65,6 +65,21 @@ public class ConexaoBanco {
 
     }
 
+    public static ResultSet executeQuery(String sql, Connection conn) throws SQLException {
+
+        try {
+
+            //Connection conn = open();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            ResultSet rset = pstm.executeQuery();
+            return rset;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+    
+    
     public static boolean executeCommand(String sql) throws SQLException {
         Connection conn = open();
         PreparedStatement pstm = conn.prepareStatement(sql);

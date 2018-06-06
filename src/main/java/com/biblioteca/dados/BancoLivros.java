@@ -9,6 +9,7 @@ import com.biblioteca.conexao.ConexaoBanco;
 import static com.biblioteca.conexao.ConexaoBanco.executeQuery;
 import com.biblioteca.model.Livro;
 import com.google.gson.Gson;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,36 +26,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BancoLivros {
 
     public static ArrayList<Livro> carrega_Livros() throws SQLException {
+        Connection conn = ConexaoBanco.open();
+        try {
 
-        ArrayList<Livro> lista = new ArrayList<>();
-        ResultSet rset = executeQuery("Select * from Livro");
+            ArrayList<Livro> lista = new ArrayList<>();
+            ResultSet rset = executeQuery("Select * from Livro");
 
-        while (rset.next()) {
-            
-            Livro l = new Livro();
-            l.setIdlivro(rset.getInt("idlivro"));
-            l.setISBN(rset.getInt("ISBN"));
-            l.setCondicao(rset.getString("Condicao"));
-            l.setLiberacao(rset.getInt("Liberacao"));
-            l.setUsuario(rset.getInt("Usuario"));
-            lista.add(l);
+            while (rset.next()) {
 
+                Livro l = new Livro();
+                l.setIdlivro(rset.getInt("idLivro"));
+                l.setISBN(rset.getInt("ISBN"));
+                l.setCondicao(rset.getString("Condicao"));
+                l.setLiberacao(rset.getInt("Liberacao"));
+                l.setUsuario(rset.getInt("Usuario"));
+                lista.add(l);
+
+            }
+
+            return lista;
+
+        } finally {
+            ConexaoBanco.close(conn);
         }
-
-        return lista;
     }
-    
+
     public static ArrayList<Livro> carrega_Livros(int Funcionario) throws SQLException {
 
         ArrayList<Livro> lista = new ArrayList<>();
-        ResultSet rset = executeQuery("Select * from Livro where Usuario = "+Funcionario+"");
-
-        Gson g = new Gson();
+        ResultSet rset = executeQuery("Select * from Livro where Usuario = " + Funcionario + "");
 
         while (rset.next()) {
-            
+
             Livro l = new Livro();
-            l.setIdlivro(rset.getInt("idlivro"));
+            l.setIdlivro(rset.getInt("idLivro"));
             l.setISBN(rset.getInt("ISBN"));
             l.setCondicao(rset.getString("Condicao"));
             l.setLiberacao(rset.getInt("Liberacao"));
@@ -66,22 +71,44 @@ public class BancoLivros {
         return lista;
     }
 
+    public static ArrayList<Livro> carrega_Livros_Esp(int livro) throws SQLException {
+
+        ArrayList<Livro> lista = new ArrayList<>();
+        ResultSet rset = executeQuery("Select * from Livro where idLivro = " + livro + "");
+
+        while (rset.next()) {
+
+            Livro l = new Livro();
+            l.setIdlivro(rset.getInt("idLivro"));
+            l.setISBN(rset.getInt("ISBN"));
+            l.setCondicao(rset.getString("Condicao"));
+            l.setLiberacao(rset.getInt("Liberacao"));
+            l.setUsuario(rset.getInt("Usuario"));
+            lista.add(l);
+
+        }
+
+        return lista;
+    }
 
     public static boolean salva_Livros(Livro livro) throws SQLException {
-        
-         return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values ("+livro.getISBN()+",'"+livro.getCondicao()+"',"+livro.getLiberacao()+","+livro.getUsuario()+")");
- 
+
+        return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values (" + livro.getISBN() + ",'" + livro.getCondicao() + "'," + livro.getLiberacao() + "," + livro.getUsuario() + ")");
+
     }
-    
+
     public static boolean altera_Livros(Livro livro) throws SQLException {
-        
-         return ConexaoBanco.executeCommand("update Livro set ISBN = "+livro.getISBN()+",Condicao='"+livro.getCondicao()+"',Liberacao="+livro.getLiberacao()+",Usuario="+livro.getUsuario()+"  where idLivro= "+livro.getIdlivro()+"");
- 
+
+        return ConexaoBanco.executeCommand("update Livro set ISBN = " + livro.getISBN() + ",Condicao='" + livro.getCondicao() + "',Liberacao=" + livro.getLiberacao() + ",Usuario=" + livro.getUsuario() + "  where idLivro= " + livro.getIdlivro() + "");
+
     }
-    
+
     public static boolean exclui_Livros(int id) throws SQLException {
-        
-         return ConexaoBanco.executeCommand("delete from Livro where idLivro = "+id+"");
- 
+        /*
+         Observação nesse contexto ocorre a atuaulização do campo definido campo liberação
+         */
+
+        return ConexaoBanco.executeCommand("update livro set Liberacao = 2 where idLivro = " + id + "");
+
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.biblioteca.bibliotecacorporativa;
+package com.biblioteca.controller;
 
 import com.biblioteca.conexao.ConexaoBanco;
 import static com.biblioteca.conexao.ConexaoBanco.executeQuery;
@@ -52,16 +52,27 @@ public class LivroController {
         return salva_Livros(livro);
     }
 
-    @RequestMapping(value = "/alteraLivro", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/alteraLivro", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean alteraLivros(@RequestBody Livro livro) throws SQLException {
-
+        
         return altera_Livros(livro);
     }
 
     @DeleteMapping("/excluiLivro/{id}")
-    public boolean excluiLivros(@PathVariable("id") int id) throws SQLException {
-
-        return exclui_Livros(id);
+    public boolean excluiLivro(@PathVariable("id") int id) throws SQLException {
+       
+        ArrayList<Livro> livros = carrega_Livros_Esp(id); 
+        if (livros.get(0).getLiberacao() == 2){
+            return true;
+        
+        }
+        
+        else {           
+            return exclui_Livros(id);
+        }
+        
+       
+        
     }
 
 }

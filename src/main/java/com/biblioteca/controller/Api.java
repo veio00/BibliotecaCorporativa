@@ -1,4 +1,4 @@
-package com.biblioteca.bibliotecacorporativa;
+package com.biblioteca.controller;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

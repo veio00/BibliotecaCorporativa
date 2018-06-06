@@ -12,13 +12,29 @@ import java.util.Date;
  * @author re91528z
  */
 public class Emprestado {
-    
-  public int idEmprestimo;
-  public String localLivro;
-  public Date devolucao;
-  public Date retirada;
-  public int retirante;
-  public int livroRetirado;
+
+    public int idEmprestimo;
+    public String localLivro;
+    public String devolucao;
+
+    public String getRetirada() {
+        return retirada;
+    }
+
+    public void setRetirada(String retirada) {
+        this.retirada = retirada;
+    }
+    public String retirada;
+    public int retirante;
+    public int livroRetirado;
+
+    public String getDevolucao() {
+        return devolucao;
+    }
+
+    public void setDevolucao(String devolucao) {
+        this.devolucao = devolucao;
+    }
 
     /**
      * @return the idEmprestimo
@@ -51,31 +67,6 @@ public class Emprestado {
     /**
      * @return the devolucao
      */
-    public Date getDevolucao() {
-        return devolucao;
-    }
-
-    /**
-     * @param devolucao the devolucao to set
-     */
-    public void setDevolucao(Date devolucao) {
-        this.devolucao = devolucao;
-    }
-
-    /**
-     * @return the retirada
-     */
-    public Date getRetirada() {
-        return retirada;
-    }
-
-    /**
-     * @param retirada the retirada to set
-     */
-    public void setRetirada(Date retirada) {
-        this.retirada = retirada;
-    }
-
     /**
      * @return the retirante
      */
@@ -103,5 +94,5 @@ public class Emprestado {
     public void setLivroRetirado(int livroRetirado) {
         this.livroRetirado = livroRetirado;
     }
-    
+
 }
