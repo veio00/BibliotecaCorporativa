@@ -24,7 +24,7 @@ public class BancoEmprestado {
         Connection conn = ConexaoBanco.open();
         try {
 
-            ResultSet rs = executeQuery("Select * from Emprestado");
+            ResultSet rs = executeQuery("Select * from Emprestado",conn);
             ArrayList<Emprestado> le = new ArrayList<Emprestado>();
 
             while (rs.next()) {

@@ -52,23 +52,28 @@ public class BancoLivros {
     }
 
     public static ArrayList<Livro> carrega_Livros(int Funcionario) throws SQLException {
+        Connection conn = ConexaoBanco.open();
+        try {
 
-        ArrayList<Livro> lista = new ArrayList<>();
-        ResultSet rset = executeQuery("Select * from Livro where Usuario = " + Funcionario + "");
+            ArrayList<Livro> lista = new ArrayList<>();
+            ResultSet rset = executeQuery("Select * from Livro where Usuario = " + Funcionario + "", conn);
 
-        while (rset.next()) {
+            while (rset.next()) {
 
-            Livro l = new Livro();
-            l.setIdlivro(rset.getInt("idLivro"));
-            l.setISBN(rset.getInt("ISBN"));
-            l.setCondicao(rset.getString("Condicao"));
-            l.setLiberacao(rset.getInt("Liberacao"));
-            l.setUsuario(rset.getInt("Usuario"));
-            lista.add(l);
+                Livro l = new Livro();
+                l.setIdlivro(rset.getInt("idLivro"));
+                l.setISBN(rset.getInt("ISBN"));
+                l.setCondicao(rset.getString("Condicao"));
+                l.setLiberacao(rset.getInt("Liberacao"));
+                l.setUsuario(rset.getInt("Usuario"));
+                lista.add(l);
 
+            }
+
+            return lista;
+        } finally {
+            ConexaoBanco.close(conn);
         }
-
-        return lista;
     }
 
     public static ArrayList<Livro> carrega_Livros_Esp(int livro) throws SQLException {

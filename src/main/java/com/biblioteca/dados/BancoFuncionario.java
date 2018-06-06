@@ -23,7 +23,7 @@ public class BancoFuncionario {
         Connection conn = ConexaoBanco.open();
         try {
 
-            ResultSet rs = executeQuery("Select * from Funcionario");
+            ResultSet rs = executeQuery("Select * from Funcionario",conn);
 
             ArrayList<Funcionario> lf = new ArrayList<Funcionario>();
 

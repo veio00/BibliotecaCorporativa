@@ -23,7 +23,7 @@ public class BancoForum {
         Connection conn = ConexaoBanco.open();
         try {
 
-            ResultSet rs = executeQuery("Select * from Forum");
+            ResultSet rs = executeQuery("Select * from Forum",conn);
             ArrayList<Forum> lfr = new ArrayList<Forum>();
 
             while (rs.next()) {

@@ -27,7 +27,7 @@ public class BancoReserva {
         Connection conn = ConexaoBanco.open();
 
         try {
-            ResultSet rs = executeQuery("Select * from Reserva");
+            ResultSet rs = executeQuery("Select * from Reserva",conn);
             ArrayList<Reserva> lr = new ArrayList<Reserva>();
 
             while (rs.next()) {
