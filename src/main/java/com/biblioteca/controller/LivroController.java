@@ -31,6 +31,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LivroController {
+    
+    @GetMapping("/teste")
+    public String teste() {
+        return "ok";
+    }
 
     // será acessivel pela URL: http://localhost:8080/livro
     @GetMapping("/livro")
