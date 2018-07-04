@@ -69,7 +69,7 @@
           });
 
           $li.attr('data-value', item.label);
-          $li.append('<a href="#" value='+projects.items[ii].volumeInfo.industryIdentifiers["1"].identifier+'>');
+          $li.append('<a href="#" value='+projects.items[ii].volumeInfo.industryIdentifiers["0"].identifier+'>');
           $li.find('a').append($img).append(item.label);    
           ii++;
           return $li.appendTo(ul);
