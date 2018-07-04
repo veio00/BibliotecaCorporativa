@@ -11,93 +11,76 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
-  <link rel="stylesheet" href= "https://github.com/necolas/css3-github-buttons/blob/master/gh-buttons.css">
-  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">   -->
   <script type="text/javascript">
     var statuslivro;
     var projects;
     var isbnlivro;
-    var ii=0;
+
     $(document).ready(function() {
   var typingTimer; //timer identifier
-  var doneTypingInterval = 100; //time in ms, 1 second for example
+  var doneTypingInterval = 1; //time in ms, 1 second for example
   var json;
   //on keyup, start the countdown
   $('#campo').keyup(function() {
     clearTimeout(typingTimer);
     if ($('#campo').val) {
       typingTimer = setTimeout(doneTyping, doneTypingInterval);
-      autocomplete();
+
     }
   });
 
     //user is "finished typing," do something
     function doneTyping() {
-
-      console.log('parei de digitar');
-      busca();
-      
+      busca(campo.value);
     }
 
-    function autocomplete() {
-      var availableTags = json;
+    function autocompletar() {
+      var ii = 0;
+      
+      if (!!projects || !!json){
 
-      $( "#campo" ).autocomplete({
-        source: availableTags
-      });
+        $( "#campo" ).autocomplete({
+          position: { my : "center bottom", at: "center top" },
+          source:json,
+          select: function( event, ui ) {
+            var isbn = $('.ui-state-focus');
+            isbn = isbn["0"].attributes.value.value;
 
+            return mostra(isbn);
+          }
+        });
+        $('#campo').data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+          var imagem;
+
+          var $li = $('<li >'),
+          $img = $('<img>');
+
+          if(!!projects.items[ii].volumeInfo.imageLinks){
+            imagem  = projects.items[ii].volumeInfo.imageLinks.smallThumbnail
+          }else{
+            imagem ="";
+          }
+
+          $img.attr({
+            src: src= imagem,
+            alt: item.label,
+            height: "50px",
+            width:"40px"
+          });
+
+          $li.attr('data-value', item.label);
+          $li.append('<a href="#" value='+projects.items[ii].volumeInfo.industryIdentifiers["1"].identifier+'>');
+          $li.find('a').append($img).append(item.label);    
+          ii++;
+          return $li.appendTo(ul);
+        };
+        $('#campo').data( "ui-autocomplete" )._resizeMenu = function() {
+          this.menu.element.outerWidth( 300 );
+        }
+      }
     } 
 
-    (function($){
-      var dados;
-      if(projects == "undefined"){
-        dados = projects;
-      }else{
-        dados = ""; 
-      }
-
-
-      $('#campo').autocomplete({
-        minLength: 0,
-        source: dados,
-        focus: function( event, ui ) {
-          $('#campo').val( ui.item.label );
-          ii = 0;
-          return false;
-        }
-      });
-
-      $('#campo').data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-        var imagem;
-
-        var $li = $('<li>'),
-        $img = $('<img>');
-
-        if(!!projects.items[ii].volumeInfo.imageLinks){
-          imagem  = projects.items[ii].volumeInfo.imageLinks.smallThumbnail
-        }else{
-          imagem ="";
-        }
-
-        $img.attr({
-          src: src= imagem,
-          alt: item.label,
-          height: "50px",
-          width:"40px"
-        });
-
-        $li.attr('data-value', item.label);
-        $li.append('<a href="#">');
-        $li.find('a').append($img).append(item.label);    
-        ii++;
-        return $li.appendTo(ul);
-      };
-
-
-    })(jQuery);
-
-    function busca(){
-      livros = (campo.value)
+    function busca(livros){
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -113,40 +96,15 @@
 
       $.ajax(settings).done(function (response) { 
         projects = response;
-        var imagem;
+        
         var obj=[] ;
         for (i in response.items){
           obj[i] =response.items[i].volumeInfo.title;
         }
 
         json = obj;      
-        for ( i in response.items){
-          // Informação retorna no console
-          console.log(response.items[i].volumeInfo.title)
-          console.log(response.items[i].volumeInfo.industryIdentifiers[0].identifier)
 
-
-
-          // Informação retorna no HTML
-          document.getElementById("livro").innerHTML = response.items[i].volumeInfo.title;
-          document.getElementById("autor").innerHTML = response.items[i].volumeInfo.authors;
-          document.getElementById("descricao").innerHTML = response.items[i].volumeInfo.description;
-          document.getElementById("idioma").innerHTML = response.items[i].volumeInfo.language;
-          document.getElementById("editora").innerHTML = response.items[i].volumeInfo.publisher;
-          document.getElementById("data").innerHTML = response.items[i].volumeInfo.publishedDate;
-          isbnlivro = document.getElementById("isbnlivro").innerHTML = response.items[i].volumeInfo.industryIdentifiers[0].identifier;
-          document.getElementById("paginas").innerHTML = response.items[i].volumeInfo.pageCount;
-          if(!!response.items[i].volumeInfo.imageLinks){
-            imagem  = response.items[i].volumeInfo.imageLinks.smallThumbnail;
-          }else{
-            imagem ="";
-          }
-          
-          document.getElementById("img1").setAttribute("src",imagem);
-
-
-        }
-        
+        autocompletar();
          //alert(response.items[0].volumeInfo.title);
        })
 
@@ -155,7 +113,31 @@
 
     // Relatório do livro para cadastro
 
+    function mostra(isbnlivro){
+                      // Informação retorna no HTML
+                      var imagem;
+                      busca(isbnlivro);
+                      document.getElementById("livro").innerHTML = projects.items[0].volumeInfo.title;
+                      document.getElementById("autor").innerHTML = projects.items[0].volumeInfo.authors;
+                      document.getElementById("descricao").innerHTML = projects.items[0].volumeInfo.description;
+                      document.getElementById("idioma").innerHTML = projects.items[0].volumeInfo.language;
+                      document.getElementById("editora").innerHTML = projects.items[0].volumeInfo.publisher;
+                      document.getElementById("data").innerHTML = projects.items[0].volumeInfo.publishedDate;
+                      console.log(projects.items[0].volumeInfo.industryIdentifiers);
+                      isbnlivro = document.getElementById("isbnlivro").innerHTML = projects.items[0].volumeInfo.industryIdentifiers["0"].identifier;
+                      document.getElementById("paginas").innerHTML = projects.items[0].volumeInfo.pageCount;
 
+                      if(!!projects.items[0].volumeInfo.imageLinks){
+                        imagem  = projects.items[0].volumeInfo.imageLinks.smallThumbnail;
+                      }else{
+                        imagem ="";
+                      }
+
+                      document.getElementById("img1").setAttribute("src",imagem);
+
+
+
+                    }
     // Menu teste 
     var active1 = false;
     var active2 = false;
@@ -246,16 +228,14 @@ $("#add").click(function(){
 
 // Registrar Livro
 $("#save").click(function(){
-  alert("Teste salvar")
+  confirm("Livro Salvo com sucesso.\nSegue confirmação")
+  $(".hide").toggle();
   $(".hide2").toggle();
   $("#home").toggle();
   document.getElementById("isbn").innerHTML = isbnlivro;
   document.getElementById("usuario").innerHTML = document.getElementById("funcionarios").value;
   var usuario = $("#funcionarios").val();
-  var condicao =  document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value
-  
-  
-  ;
+  var condicao =  document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value;
 
   //document.getElementById("liberacao").innerHTML = document.getElementById("zero").value;
 
@@ -396,7 +376,7 @@ p {
   text-align: center;
   width: 198.5%;
 }
-}
+
 #campo:focus{
   box-shadow: 0 0 0 0;
   border: 0 none;
@@ -515,17 +495,18 @@ label {
 </style>
 </head>
 <body>
-  <!-- Teste menu  -->
-  <div class="parent2">
-    <div class="test1"><i class="fa fa-user fa-2x"></i></div>
-    <div class="test2"><i class="fas fa-book fa-2x"></i></i></div>
-    <div class="test3"><i class="fas fa-shopping-cart fa-2x"></i></i></div>
-    <div class="test4"><i class="fab fa-forumbee fa-2x"></i></i></div>
-    <div class="mask2"><i class="fas fa-bars fa-3x"></i></div>
-  </div>
+
 
   <!-- Teste menu  -->
   <table height="700px" class="tabela">
+    <!-- Teste menu  -->
+    <div class="parent2">
+      <div class="test1"><i class="fa fa-user fa-2x"></i></div>
+      <div class="test2"><i class="fas fa-book fa-2x"></i></i></div>
+      <div class="test3"><i class="fas fa-shopping-cart fa-2x"></i></i></div>
+      <div class="test4"><i class="fab fa-forumbee fa-2x"></i></i></div>
+      <div class="mask2"><i class="fas fa-bars fa-3x"></i></div>
+    </div>
     <tr>
       <td>
         <div class="content">
