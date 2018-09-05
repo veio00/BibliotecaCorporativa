@@ -36,13 +36,13 @@ public class ComentarioController {
         return carrega_Comentario();
     }
 
-    @RequestMapping(value = "/salvaComentario", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/salvaComentario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean salvaComentario(@RequestBody Comentario comentario) throws SQLException {
 
         return salva_Comentario(comentario);
     }
 
-    @RequestMapping(value = "/alteraComentario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/alteraComentario", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean alteraComentario(@RequestBody Comentario comentario) throws SQLException {
 
         return altera_Comentario(comentario);

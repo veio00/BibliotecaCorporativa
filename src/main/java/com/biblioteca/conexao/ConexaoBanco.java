@@ -27,10 +27,23 @@ import static org.springframework.core.convert.TypeDescriptor.array;
 public class ConexaoBanco {
 //jdbc:sqlserver://10.232.0.16:1433;databaseName=SELFBK [travelusr em dbo]
 
+    /*
+    Conexeão Banco de Dados Logicalis:
+
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String connectionStr = "jdbc:sqlserver://10.232.0.16:1433;databaseName=SELFBK";
     private static String usuario = "travelusr";
     private static String senha = "travel";
+    */
+
+    // Conexão com Azure
+    private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static String connectionStr = "jdbc:sqlserver://aco.database.windows.net:1433;database=Digito";
+    private static String usuario = "aco@aco";
+    private static String senha = "LogicalisDigito2018";
+
+
+
 
     public static Connection open() throws SQLException {
         Connection conn = null;
