@@ -1,6 +1,4 @@
 com\biblioteca\dados\BancoLivros.class
-com\biblioteca\bibliotecacorporativa\LivroController.class
-com\biblioteca\bibliotecacorporativa\Api.class
 com\biblioteca\model\Forum.class
 com\biblioteca\model\Livro.class
 com\biblioteca\model\Funcionario.class

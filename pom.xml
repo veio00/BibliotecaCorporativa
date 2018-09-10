@@ -48,11 +48,6 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-
-
-
- 
-
     <!-- configuração do spring boot - parte 3 -->
     <build>
         <plugins>
