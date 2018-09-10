@@ -56,7 +56,7 @@ public class BancoFuncionario {
     }
 
     public static boolean exclui_Funcionario(int id) throws SQLException {
-
+    //obs: Exclusão do funcionário será remoção do RE - Analisar essa questão.
         return ConexaoBanco.executeCommand("delete from Funcionario where idFuncionario =  " + id + "");
 
     }
