@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Logicalis</title>
@@ -12,10 +11,8 @@
   <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
   <script type="text/javascript">
-    var statuslivro;
     var projects;
     var isbnlivro;
-
     $(document).ready(function() {
   var typingTimer; //timer identifier
   var doneTypingInterval = 1; //time in ms, 1 second for example
@@ -89,8 +86,7 @@
         "printType": "books",
         "maxResults": "40",
         "headers": {
-          "Cache-Control": "no-cache",
-          "Postman-Token": "19c66e4c-74f9-4dbc-8536-137e3f4f3da1"
+          "Cache-Control": "no-cache"
         }
       }
 
@@ -166,18 +162,17 @@
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://digito.azurewebsites.net/funcionario",
+  "url": "https://digito2.azurewebsites.net/funcionario",
   "method": "GET",
   "headers": {
     "Cache-Control": "no-cache",
-    "Postman-Token": "edef36e2-a681-44e7-9fe5-aa291b91ae18"
+    "Postman-Token": "1a508f45-607e-4d69-968f-cc75c86d755a"
   }
 }
 
 
-
 $.ajax(settings).done(function (response) {
-
+  console.log(response);
   var _htmlOptions = "";
 
   $.each(response,function(i,response){
@@ -188,36 +183,6 @@ $.ajax(settings).done(function (response) {
 
 });
 
-
-/////// Menu Livro
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://digito.azurewebsites.net/livro",
-  "method": "GET",
-  "headers": {
-    "Cache-Control": "no-cache",
-    "Postman-Token": "65bb3fec-1e9a-45d8-9096-8cec6857a14b"
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response)
-  //console.log(response[1].idlivro);
-  //console.log(response[1].liberacao);
-  //console.log(response[1].isbn);
-  //console.log(response[1].condicao);
-  //console.log(response[1].usuario)
-
-        // Informação retorna no HTML
-         // document.getElementById("id").innerHTML = response[1].idlivro;
-          //document.getElementById("liberacao").innerHTML = response[1].liberacao;
-          //document.getElementById("isbn").innerHTML = response[1].isbn
-          //document.getElementById("condicao").innerHTML = response[1].condicao;
-          //document.getElementById("usuario").innerHTML = response[1].usuario;
-
-        });
-
 // Exibir e ocultar objeto
 $("#add").click(function(){
   $(".hide").toggle();
@@ -225,40 +190,34 @@ $("#add").click(function(){
 
 });
 
-
 // Registrar Livro
 $("#save").click(function(){
   confirm("Livro Salvo com sucesso.\nSegue confirmação")
   $(".hide").toggle();
   $(".hide2").toggle();
   $("#home").toggle();
-  document.getElementById("isbn").innerHTML = isbnlivro;
-  document.getElementById("usuario").innerHTML = document.getElementById("funcionarios").value;
+
+  var liberacao = document.getElementById("liberacao").innerHTML = document.getElementById("um").value;
+  var nisbn = document.getElementById("isbn").innerHTML = projects.items[0].volumeInfo.industryIdentifiers["0"].identifier;
+  var condicao = document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value;
   var usuario = $("#funcionarios").val();
-  var condicao =  document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value;
-
-  //document.getElementById("liberacao").innerHTML = document.getElementById("zero").value;
-
+  document.getElementById("usuario").innerHTML = document.getElementById("funcionarios").value;
   var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://digito.azurewebsites.net/salvaLivro",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json",
-      "Cache-Control": "no-cache",
-      "Postman-Token": "61ca94c7-e244-47ab-82b8-49a6b82c5628"
+  "url": "https://digito2.azurewebsites.net/salvaLivro",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+
     },
-    "processData": false,
     //"data": "{liberacao: 0,condicao: '"+condicao+"',isbn: "+isbnlivro+",usuario:" +usuario+"}"
-    "data": "    {\"liberacao\": 0,\"condicao\": \""+condicao+"\",\"isbn\": 857686185,\"usuario\": "+usuario+"},"
+    //"data": "    {\"liberacao\":\""+liberacao+"\",\"condicao\": \""+condicao+"\",\"isbn\":\""+ nisbn+"\",\"usuario\": "+usuario+"},"
+    "data": "    {\n        \"isbn\":'"+nisbn+"',\n        \"condicao\": \"b\",\n        \"liberacao\": 1,\n        \"usuario\": 13\n    }"
   }
 
   $.ajax(settings).done(function (response) {
     console.log(response);
   });
 });
-
 
 
 });
@@ -409,7 +368,7 @@ p {
   color:white;
   text-align:center;
   line-height:70px;
-  top:25%;
+  top:20%;
   left:25%;
   z-index:19;
   transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
@@ -425,7 +384,7 @@ p {
   color:white;
   text-align:center;
   line-height:70px;
-  top:25%;
+  top:20%;
   left:25%;
   z-index:19;
   transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .2s;
@@ -440,7 +399,7 @@ p {
   color:white;
   text-align:center;
   line-height:70px;
-  top:25%;
+  top:20%;
   left:25%;
   transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .4s;  
 }
@@ -454,7 +413,7 @@ p {
   color:white;
   text-align:center;
   line-height:70px;
-  top:30%;
+  top:20%;
   left:25%;
   transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .6s;  
 }
@@ -473,6 +432,11 @@ p {
   line-height:120px;
   cursor:pointer;
   position:fixed;
+}
+
+#icones{
+
+      margin-top: 20%;
 }
 
 #statuslivro{
@@ -501,11 +465,11 @@ label {
   <table height="700px" class="tabela">
     <!-- Teste menu  -->
     <div class="parent2">
-      <div class="test1"><i class="fa fa-user fa-2x"></i></div>
-      <div class="test2"><i class="fas fa-book fa-2x"></i></i></div>
-      <div class="test3"><i class="fas fa-shopping-cart fa-2x"></i></i></div>
-      <div class="test4"><i class="fab fa-forumbee fa-2x"></i></i></div>
-      <div class="mask2"><i class="fas fa-bars fa-3x"></i></div>
+      <div class="test1"><i class="fa fa-user fa-2x" id="icones"></i></div>
+      <div class="test2"><i class="fas fa-book fa-2x" id="icones"></i></i></div>
+      <div class="test3"><i class="fas fa-shopping-cart fa-2x" id="icones"></i></i></div>
+      <div class="test4"><i class="fab fa-forumbee fa-2x" id="icones"></i></i></div>
+      <div class="mask2"><i class="fas fa-bars fa-3x" id="icones"></i></div>
     </div>
     <tr>
       <td>
@@ -522,111 +486,111 @@ label {
                   <td><input placeholder="Título" name="Título" id="campo" class="form-control autocomplete"></td>
                 </tr>
 
-                  <!-- 
+
                 <tr>
                   <td>
                     <form action="#">
                       <label>
-                        <input id="zero" name="group1" type="radio" value="0" checked />
+                        <input id="um" name="group1" type="radio" value="1" checked />
                         <span>Emprestar</span>
                       </label>
                     </td>
                     <td>
                       <label>
-                        <input name="group1" type="radio" value="1" />
+                        <input id="zero" name="group1" type="radio" value="0"  />
                         <span>Indisponivel</span>
                       </label>
                     </form>
                   </td>
                 </tr>
                 <tr>
-                -->
 
-                <td><div class="btn" id="find">Buscar</div></td>
-                <td><div class="btn" id="add">Adicionar</div></td>
-              </tr>
-            </table>
-          </center>
 
-          <div class="hide">
-            <center>
-              <h3> Status do livro</h3>
-              <textarea class="hide" id="statuslivro" placeholder="Condição do Livro" cols="60" rows="5" ></textarea> 
+                  <td><div class="btn" id="find">Buscar</div></td>
+                  <td><div class="btn" id="add">Adicionar</div></td>
+                </tr>
+              </table>
             </center>
-          </div>
-          <center> 
-            <button class="hide" id= "save" class="button button-large button-plain button-border button-circle"><i class="fas fa-save"></i></button>
-            <button class="hide" id="delete" class="button button-large button-plain button-border button-circle"><i class="fas fa-trash"></i></i></button>
-          </center>
 
-          <div id="home">
-            <h1>Informações</h1>
-            <hr>
-            <br>
-            <div class="img"><img src="" id="img1">
+            <div class="hide">
+              <center>
+                <h3> Status do livro</h3>
+                <textarea class="hide" id="statuslivro" placeholder="Condição do Livro" cols="60" rows="5" ></textarea> 
+              </center>
             </div>
-            <h3>Título:</h3>
-            <p>
-              <div id="livro"></div>
-            </p>
-            <h3>Autor:</h3>
-            <p>
-              <div id="autor"></div>
-            </p>
-            <h3>Idioma:</h3>
-            <p>
-              <div id="idioma"></div>
-            </p>
-            <h3>Editora:</h3>
-            <p>
-              <div id="editora"></div>
-            </p>
-            <h3>Ano:</h3>
-            <p>
-              <div id="data"></div>
-            </p>
-            <h3>ISBN:</h3>
-            <p>
-              <div id="isbnlivro"></div>
-            </p>
-            <h3>Número de Páginas:</h3>
-            <p>
-              <div id="paginas"></div>
-            </p>
-            <h3>Descrição:</h3>
-            <p>
-              <div id="descricao"></div>
-            </p>
-          </div>
+            <center> 
+              <button class="hide" id= "save" class="button button-large button-plain button-border button-circle"><i class="fas fa-save"></i></button>
+              <button class="hide" id="delete" class="button button-large button-plain button-border button-circle"><i class="fas fa-trash"></i></i></button>
+            </center>
+
+            <div id="home">
+              <h1>Informações</h1>
+              <hr>
+              <br>
+              <div class="img"><img src="" id="img1">
+              </div>
+              <h3>Título:</h3>
+              <p>
+                <div id="livro"></div>
+              </p>
+              <h3>Autor:</h3>
+              <p>
+                <div id="autor"></div>
+              </p>
+              <h3>Idioma:</h3>
+              <p>
+                <div id="idioma"></div>
+              </p>
+              <h3>Editora:</h3>
+              <p>
+                <div id="editora"></div>
+              </p>
+              <h3>Ano:</h3>
+              <p>
+                <div id="data"></div>
+              </p>
+              <h3>ISBN:</h3>
+              <p>
+                <div id="isbnlivro"></div>
+              </p>
+              <h3>Número de Páginas:</h3>
+              <p>
+                <div id="paginas"></div>
+              </p>
+              <h3>Descrição:</h3>
+              <p>
+                <div id="descricao"></div>
+              </p>
+            </div>
+          </center>  
+        </div>
+        <div class="hide2" id="livro">
+          <h1>Livro</h1>
+          <hr>
+          <br>
+          <h3>Liberação:</h3>
+          <p>
+            <div id="liberacao"></div>
+          </p>
+          <h3>ISBN:</h3>
+          <p>
+            <div id="isbn"></div>
+          </p>
+          <h3>Condição:</h3>
+          <p>
+            <div id="condicao"></div>
+          </p>
+          <h3>Usuário:</h3>
+          <p>
+            <div id="usuario"></div>
+          </p>
         </center>  
       </div>
-      <div class="hide2" id="livro">
-        <h1>Livro</h1>
-        <hr>
-        <br>
-        <h3>Liberação:</h3>
-        <p>
-          <div id="liberacao"></div>
-        </p>
-        <h3>ISBN:</h3>
-        <p>
-          <div id="isbn"></div>
-        </p>
-        <h3>Condição:</h3>
-        <p>
-          <div id="condicao"></div>
-        </p>
-        <h3>Usuário:</h3>
-        <p>
-          <div id="usuario"></div>
-        </p>
+      <center>
+        <select class="hide" name="Usuários" id="funcionarios"></select>
       </center>  
-    </div>
-    <center>
-      <select class="hide" name="Usuários" id="funcionarios"></select>
-    </center>  
-  </body>
-  </html>
+    </body>
+    </html>
 
 
 

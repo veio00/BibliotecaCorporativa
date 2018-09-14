@@ -36,7 +36,7 @@ public class BancoLivros {
 
                 Livro l = new Livro();
                 l.setIdlivro(rset.getInt("idLivro"));
-                l.setISBN(rset.getInt("ISBN"));
+                l.setISBN(rset.getString("ISBN"));
                 l.setCondicao(rset.getString("Condicao"));
                 l.setLiberacao(rset.getInt("Liberacao"));
                 l.setUsuario(rset.getInt("Usuario"));
@@ -62,7 +62,7 @@ public class BancoLivros {
 
                 Livro l = new Livro();
                 l.setIdlivro(rset.getInt("idLivro"));
-                l.setISBN(rset.getInt("ISBN"));
+                l.setISBN(rset.getString("ISBN"));
                 l.setCondicao(rset.getString("Condicao"));
                 l.setLiberacao(rset.getInt("Liberacao"));
                 l.setUsuario(rset.getInt("Usuario"));
@@ -85,7 +85,7 @@ public class BancoLivros {
 
             Livro l = new Livro();
             l.setIdlivro(rset.getInt("idLivro"));
-            l.setISBN(rset.getInt("ISBN"));
+            l.setISBN(rset.getString("ISBN"));
             l.setCondicao(rset.getString("Condicao"));
             l.setLiberacao(rset.getInt("Liberacao"));
             l.setUsuario(rset.getInt("Usuario"));

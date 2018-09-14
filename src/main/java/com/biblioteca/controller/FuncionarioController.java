@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FuncionarioController {
 
     // será acessivel pela URL: http://localhost:8080/forum
+
     @GetMapping("/funcionario")
     public ArrayList<Funcionario> carregaFuncionario() throws SQLException {
         ArrayList<Funcionario> f = new ArrayList<>();

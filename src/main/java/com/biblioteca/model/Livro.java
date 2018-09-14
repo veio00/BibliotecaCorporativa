@@ -11,7 +11,7 @@ package com.biblioteca.model;
  */
 public class Livro {
   private int idlivro;
-  private int ISBN;
+  private String ISBN;
   private String Condicao;
   private int Liberacao;
   private int Usuario;
@@ -33,14 +33,14 @@ public class Livro {
     /**
      * @return the ISBN
      */
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
     /**
      * @param ISBN the ISBN to set
      */
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
