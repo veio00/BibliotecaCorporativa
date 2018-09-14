@@ -1,8 +1,0 @@
-com\biblioteca\dados\BancoLivros.class
-com\biblioteca\model\Forum.class
-com\biblioteca\model\Livro.class
-com\biblioteca\model\Funcionario.class
-com\biblioteca\model\Emprestado.class
-com\biblioteca\model\Comentario.class
-com\biblioteca\model\Reserva.class
-com\biblioteca\conexao\ConexaoBanco.class

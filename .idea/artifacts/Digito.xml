@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Digito">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Digito.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
