@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Digito@aco.database.windows.net" uuid="6b1124a6-ed32-4e26-b288-7902021468d2">
+      <database-info product="Microsoft SQL Server" version="12.00.700" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 7.0 for SQL Server" driver-version="7.0.0.0" family="AZURE" exact-version="12.0.700">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>aco@aco</user-name>
+      <introspection-schemas>Digito:*</introspection-schemas>
+    </data-source>
+  </component>
+</project>
