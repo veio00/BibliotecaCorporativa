@@ -98,13 +98,13 @@ public class BancoLivros {
 
     public static boolean salva_Livros(Livro livro) throws SQLException {
 
-        return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values (" + livro.getISBN() + ",'" + livro.getCondicao() + "'," + livro.getLiberacao() + "," + livro.getUsuario() + ")");
+        return ConexaoBanco.executeCommand("Insert into Livro(ISBN,Condicao,Liberacao,Usuario) Values ('" + livro.getISBN() + "','" + livro.getCondicao() + "'," + livro.getLiberacao() + "," + livro.getUsuario() + ")");
 
     }
 
     public static boolean altera_Livros(Livro livro) throws SQLException {
 
-        return ConexaoBanco.executeCommand("update Livro set ISBN = " + livro.getISBN() + ",Condicao='" + livro.getCondicao() + "',Liberacao=" + livro.getLiberacao() + ",Usuario=" + livro.getUsuario() + "  where idLivro= " + livro.getIdlivro() + "");
+        return ConexaoBanco.executeCommand("update Livro set ISBN = '" + livro.getISBN() + "',Condicao='" + livro.getCondicao() + "',Liberacao=" + livro.getLiberacao() + ",Usuario=" + livro.getUsuario() + "  where idLivro= " + livro.getIdlivro() + "");
 
     }
 

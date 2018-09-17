@@ -162,7 +162,7 @@
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://digito2.azurewebsites.net/funcionario",
+  "url": "https://digito.azurewebsites.net/funcionario",
   "method": "GET",
   "headers": {
     "Cache-Control": "no-cache",
@@ -202,21 +202,27 @@ $("#save").click(function(){
   var condicao = document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value;
   var usuario = $("#funcionarios").val();
   document.getElementById("usuario").innerHTML = document.getElementById("funcionarios").value;
+  console.log(liberacao,nisbn,condicao,usuario);
   var settings = {
-  "url": "https://digito2.azurewebsites.net/salvaLivro",
+  "async": true,
+  "crossDomain": true,
+  "url": "http://digito.azurewebsites.net/salvaLivro",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "1b046b8a-f424-47d7-987f-15b2daf54978"
+  },
+  "processData": false,
+  "data": '{"isbn":"' + nisbn +' " ,"condicao":"' + condicao +' ","liberacao":"' + liberacao +' ","usuario":"' + usuario +' " }'
 
-    },
-    //"data": "{liberacao: 0,condicao: '"+condicao+"',isbn: "+isbnlivro+",usuario:" +usuario+"}"
-    //"data": "    {\"liberacao\":\""+liberacao+"\",\"condicao\": \""+condicao+"\",\"isbn\":\""+ nisbn+"\",\"usuario\": "+usuario+"},"
-    "data": "    {\n        \"isbn\":'"+nisbn+"',\n        \"condicao\": \"b\",\n        \"liberacao\": 1,\n        \"usuario\": 13\n    }"
-  }
+}
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-  });
+  }).fail(function() {
+    alert( response);
+  });;
 });
 
 
