@@ -13,6 +13,7 @@
   <script type="text/javascript">
     var projects;
     var isbnlivro;
+    var isbn;
     $(document).ready(function() {
   var typingTimer; //timer identifier
   var doneTypingInterval = 1; //time in ms, 1 second for example
@@ -40,10 +41,11 @@
           position: { my : "center bottom", at: "center top" },
           source:json,
           select: function( event, ui ) {
-            var isbn = $('.ui-state-focus');
+            isbn = $('.ui-state-focus');
             isbn = isbn["0"].attributes.value.value;
+            return buscaisbn(isbn);
+            //return monstra(isbn);
 
-            return mostra(isbn);
           }
         });
         $('#campo').data( "ui-autocomplete" )._renderItem = function( ul, item ) {
@@ -106,6 +108,36 @@
 
     };
 
+
+
+    function buscaisbn(livros){
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://www.googleapis.com/books/v1/volumes?q="+livros,
+        "method": "GET",
+        "printType": "books",
+        "maxResults": "40",
+        "headers": {
+          "Cache-Control": "no-cache"
+        }
+      }
+
+      $.ajax(settings).done(function (response) { 
+        projects = response;
+        
+        var obj=[] ;
+        for (i in response.items){
+          obj[i] =response.items[i].volumeInfo.title;
+        }
+
+        json = obj;      
+
+        mostra(livros);
+         //alert(response.items[0].volumeInfo.title);
+       })
+
+    };
 
     // Relatório do livro para cadastro
 
