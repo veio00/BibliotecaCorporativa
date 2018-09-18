@@ -1,146 +1,149 @@
 <html>
 <head>
-  <title>Logicalis</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/37/PNG/512/literature_thebook_3708.png" type="image/x-icon" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
-  <script type="text/javascript">
-    var projects;
-    var isbnlivro;
-    var isbn;
-    $(document).ready(function() {
+	<title>Logicalis</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/37/PNG/512/literature_thebook_3708.png" type="image/x-icon" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+	<script type="text/javascript">
+		var projects;
+		var isbnlivro;
+		var isbn;
+
+		$(document).ready(function() {
   var typingTimer; //timer identifier
   var doneTypingInterval = 1; //time in ms, 1 second for example
   var json;
   //on keyup, start the countdown
   $('#campo').keyup(function() {
-    clearTimeout(typingTimer);
-    if ($('#campo').val) {
-      typingTimer = setTimeout(doneTyping, doneTypingInterval);
+  	clearTimeout(typingTimer);
+  	if ($('#campo').val) {
+  		typingTimer = setTimeout(doneTyping, doneTypingInterval);
 
-    }
+  	}
   });
 
-    //user is "finished typing," do something
+    //Buscar através da digitação e pressionando o espeaço
     function doneTyping() {
-      busca(campo.value);
+    	busca(campo.value);
     }
 
+    //Exibir lista de livros do autocompletar
     function autocompletar() {
-      var ii = 0;
-      
-      if (!!projects || !!json){
+    	var ii = 0;
 
-        $( "#campo" ).autocomplete({
-          position: { my : "center bottom", at: "center top" },
-          source:json,
-          select: function( event, ui ) {
-            isbn = $('.ui-state-focus');
-            isbn = isbn["0"].attributes.value.value;
-            return buscaisbn(isbn);
+    	if (!!projects || !!json){
+
+    		$( "#campo" ).autocomplete({
+    			position: { my : "center bottom", at: "center top" },
+    			source:json,
+    			select: function( event, ui ) {
+    				isbn = $('.ui-state-focus');
+    				isbn = isbn["0"].attributes.value.value;
+    				return buscaselecionado(isbn);
             //return monstra(isbn);
 
-          }
-        });
-        $('#campo').data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-          var imagem;
-
-          var $li = $('<li >'),
-          $img = $('<img>');
-
-          if(!!projects.items[ii].volumeInfo.imageLinks){
-            imagem  = projects.items[ii].volumeInfo.imageLinks.smallThumbnail
-          }else{
-            imagem ="";
-          }
-
-          $img.attr({
-            src: src= imagem,
-            alt: item.label,
-            height: "50px",
-            width:"40px"
-          });
-
-          $li.attr('data-value', item.label);
-          $li.append('<a href="#" value='+projects.items[ii].volumeInfo.industryIdentifiers["0"].identifier+'>');
-          $li.find('a').append($img).append(item.label);    
-          ii++;
-          return $li.appendTo(ul);
-        };
-        $('#campo').data( "ui-autocomplete" )._resizeMenu = function() {
-          this.menu.element.outerWidth( 300 );
         }
-      }
+    });
+    		$('#campo').data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    			var imagem;
+
+    			var $li = $('<li >'),
+    			$img = $('<img>');
+
+    			if(!!projects.items[ii].volumeInfo.imageLinks){
+    				imagem  = projects.items[ii].volumeInfo.imageLinks.smallThumbnail
+    			}else{
+    				imagem ="";
+    			}
+
+    			$img.attr({
+    				src: src= imagem,
+    				alt: item.label,
+    				height: "50px",
+    				width:"40px"
+    			});
+
+    			$li.attr('data-value', item.label);
+    			$li.append('<a href="#" value='+projects.items[ii].volumeInfo.industryIdentifiers["0"].identifier+'>');
+    			$li.find('a').append($img).append(item.label);    
+    			ii++;
+    			return $li.appendTo(ul);
+    		};
+    		$('#campo').data( "ui-autocomplete" )._resizeMenu = function() {
+    			this.menu.element.outerWidth( 300 );
+    		}
+    	}
     } 
 
+
+    // Buscar através do titulo do livro 
     function busca(livros){
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://www.googleapis.com/books/v1/volumes?q="+livros,
-        "method": "GET",
-        "printType": "books",
-        "maxResults": "40",
-        "headers": {
-          "Cache-Control": "no-cache"
-        }
-      }
+    	var settings = {
+    		"async": true,
+    		"crossDomain": true,
+    		"url": "https://www.googleapis.com/books/v1/volumes?q="+livros,
+    		"method": "GET",
+    		"printType": "books",
+    		"maxResults": "40",
+    		"headers": {
+    			"Cache-Control": "no-cache"
+    		}
+    	}
 
-      $.ajax(settings).done(function (response) { 
-        projects = response;
-        
-        var obj=[] ;
-        for (i in response.items){
-          obj[i] =response.items[i].volumeInfo.title;
-        }
+    	$.ajax(settings).done(function (response) { 
+    		projects = response;
 
-        json = obj;      
+    		var obj=[] ;
+    		for (i in response.items){
+    			obj[i] =response.items[i].volumeInfo.title;
+    		}
 
-        autocompletar();
+    		json = obj;      
+
+    		autocompletar();
          //alert(response.items[0].volumeInfo.title);
-       })
+     })
 
     };
 
 
+    // Buscar livro selecionado
+    function buscaselecionado(livros){
+    	var settings = {
+    		"async": true,
+    		"crossDomain": true,
+    		"url": "https://www.googleapis.com/books/v1/volumes?q="+livros,
+    		"method": "GET",
+    		"printType": "books",
+    		"maxResults": "40",
+    		"headers": {
+    			"Cache-Control": "no-cache"
+    		}
+    	}
 
-    function buscaisbn(livros){
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://www.googleapis.com/books/v1/volumes?q="+livros,
-        "method": "GET",
-        "printType": "books",
-        "maxResults": "40",
-        "headers": {
-          "Cache-Control": "no-cache"
-        }
-      }
+    	$.ajax(settings).done(function (response) { 
+    		projects = response;
 
-      $.ajax(settings).done(function (response) { 
-        projects = response;
-        
-        var obj=[] ;
-        for (i in response.items){
-          obj[i] =response.items[i].volumeInfo.title;
-        }
+    		var obj=[] ;
+    		for (i in response.items){
+    			obj[i] =response.items[i].volumeInfo.title;
+    		}
 
-        json = obj;      
+    		json = obj;      
 
-        mostra(livros);
+    		mostra(livros);
          //alert(response.items[0].volumeInfo.title);
-       })
+     })
 
     };
 
     // Relatório do livro para cadastro
-
     function mostra(isbnlivro){
                       // Informação retorna no HTML
                       var imagem;
@@ -156,107 +159,105 @@
                       document.getElementById("paginas").innerHTML = projects.items[0].volumeInfo.pageCount;
 
                       if(!!projects.items[0].volumeInfo.imageLinks){
-                        imagem  = projects.items[0].volumeInfo.imageLinks.smallThumbnail;
+                      	imagem  = projects.items[0].volumeInfo.imageLinks.smallThumbnail;
                       }else{
-                        imagem ="";
+                      	imagem ="";
                       }
 
                       document.getElementById("img1").setAttribute("src",imagem);
 
 
 
-                    }
-    // Menu teste 
+                  }
+
+    // Buscar funcionarios
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://digito.azurewebsites.net/funcionario",
+	"method": "GET",
+	"headers": {
+		"Cache-Control": "no-cache",
+		"Postman-Token": "1a508f45-607e-4d69-968f-cc75c86d755a"
+	}
+}
+
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+	var _htmlOptions = "";
+
+	$.each(response,function(i,response){
+		_htmlOptions += "<option value='"+response.idFuncionario+"'>"+response.nome+"</option>";
+	});
+
+	$("#funcionarios").append(_htmlOptions);
+
+});
+
+// Exibir e ocultar objeto
+$("#add").click(function(){
+	$(".hide").toggle();
+
+});
+
+// Registrar Livro
+$("#save").click(function(){
+	confirm("Livro Salvo com sucesso.\nSegue confirmação")
+	$(".hide").toggle();
+	$(".hide2").toggle();
+	$("#home").toggle();
+
+	var liberacao = document.getElementById("liberacao").innerHTML = document.getElementById("um").value;
+	var nisbn = document.getElementById("isbn").innerHTML = projects.items[0].volumeInfo.industryIdentifiers["0"].identifier;
+	var condicao = document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value;
+	var usuario = $("#funcionarios").val();
+	document.getElementById("usuario").innerHTML = document.getElementById("funcionarios").value;
+	console.log(liberacao,nisbn,condicao,usuario);
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "http://digito.azurewebsites.net/salvaLivro",
+		"method": "POST",
+		"headers": {
+			"Content-Type": "application/json",
+			"Cache-Control": "no-cache",
+			"Postman-Token": "1b046b8a-f424-47d7-987f-15b2daf54978"
+		},
+		"processData": false,
+		"data": '{"isbn":"' + nisbn +' " ,"condicao":"' + condicao +' ","liberacao":"' + liberacao +' ","usuario":"' + usuario +' " }'
+
+	}
+
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	}).fail(function() {
+		alert( response);
+	});;
+
+});
+    // Menu  
     var active1 = false;
     var active2 = false;
     var active3 = false;
     var active4 = false;
 
     $('.parent2').on('mousedown touchstart', function() {
+    	if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,120px)'});
+    		else $(this).find('.test1').css({'background-color': 'dimGray', 'cursor':'pointer', 'transform': 'none'}); 
+    		if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(0px,190px)'});
+    			else $(this).find('.test2').css({'background-color': 'darkGray', 'cursor':'pointer', 'transform': 'none'});
+    			if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'cursor':'pointer', 'transform': 'translate(0px,260px)'});
+    				else $(this).find('.test3').css({'background-color': 'silver', 'cursor':'pointer', 'transform': 'none'});
+    				if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'cursor':'pointer', 'transform': 'translate(0px,330px)'});
+    					else $(this).find('.test4').css({'background-color': 'silver', 'cursor':'pointer', 'transform': 'none'});
+    					active1 = !active1;
+    					active2 = !active2;
+    					active3 = !active3;
+    					active4 = !active4;
 
-      if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,120px)'});
-        else $(this).find('.test1').css({'background-color': 'dimGray', 'cursor':'pointer', 'transform': 'none'}); 
-        if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(0px,190px)'});
-          else $(this).find('.test2').css({'background-color': 'darkGray', 'cursor':'pointer', 'transform': 'none'});
-          if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'cursor':'pointer', 'transform': 'translate(0px,260px)'});
-            else $(this).find('.test3').css({'background-color': 'silver', 'cursor':'pointer', 'transform': 'none'});
-            if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'cursor':'pointer', 'transform': 'translate(0px,330px)'});
-              else $(this).find('.test4').css({'background-color': 'silver', 'cursor':'pointer', 'transform': 'none'});
-              active1 = !active1;
-              active2 = !active2;
-              active3 = !active3;
-              active4 = !active4;
-              
-            });
-
-
-/////// Funcionario
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://digito.azurewebsites.net/funcionario",
-  "method": "GET",
-  "headers": {
-    "Cache-Control": "no-cache",
-    "Postman-Token": "1a508f45-607e-4d69-968f-cc75c86d755a"
-  }
-}
-
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-  var _htmlOptions = "";
-
-  $.each(response,function(i,response){
-   _htmlOptions += "<option value='"+response.idFuncionario+"'>"+response.nome+"</option>";
- });
-
-  $("#funcionarios").append(_htmlOptions);
-
-});
-
-// Exibir e ocultar objeto
-$("#add").click(function(){
-  $(".hide").toggle();
-
-
-});
-
-// Registrar Livro
-$("#save").click(function(){
-  confirm("Livro Salvo com sucesso.\nSegue confirmação")
-  $(".hide").toggle();
-  $(".hide2").toggle();
-  $("#home").toggle();
-
-  var liberacao = document.getElementById("liberacao").innerHTML = document.getElementById("um").value;
-  var nisbn = document.getElementById("isbn").innerHTML = projects.items[0].volumeInfo.industryIdentifiers["0"].identifier;
-  var condicao = document.getElementById("condicao").innerHTML = document.getElementById("statuslivro").value;
-  var usuario = $("#funcionarios").val();
-  document.getElementById("usuario").innerHTML = document.getElementById("funcionarios").value;
-  console.log(liberacao,nisbn,condicao,usuario);
-  var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://digito.azurewebsites.net/salvaLivro",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "1b046b8a-f424-47d7-987f-15b2daf54978"
-  },
-  "processData": false,
-  "data": '{"isbn":"' + nisbn +' " ,"condicao":"' + condicao +' ","liberacao":"' + liberacao +' ","usuario":"' + usuario +' " }'
-
-}
-
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  }).fail(function() {
-    alert( response);
-  });;
-});
-
+    				});
+    
 
 });
 
@@ -265,370 +266,367 @@ $("#save").click(function(){
 
 <style>
 body {
-  background-color: #efefef;
+	background-color: #efefef;
 }
 
 hr {
-  border: 1px solid #d4102b;
+	border: 1px solid #d4102b;
 }
 
 .img {
-  margin-left: 20%;
-  float: right;
-  height: auto;
-  width: auto;
-  border-width: 1px;
+	margin-left: 20%;
+	float: right;
+	height: auto;
+	width: auto;
+	border-width: 1px;
 }
 
 .tabela {
-  height: 50%;
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 2%;
+	height: 50%;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 2%;
 }
 
 card-1 {
-  width: 250%;
-  float: left;
-  margin-top: 5%;
-  padding: 1.5%;
-  margin-left: 100%;
+	width: 250%;
+	float: left;
+	margin-top: 5%;
+	padding: 1.5%;
+	margin-left: 100%;
 }
 
 .ui-menu .ui-menu-item a {
-  text-decoration: none;
-  display: block;
-  padding: 0px .4em;
-  line-height: 1.5;
-  min-height: 0;
-  font-weight: normal;
+	text-decoration: none;
+	display: block;
+	padding: 0px .4em;
+	line-height: 1.5;
+	min-height: 0;
+	font-weight: normal;
 }
 h1 {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
 }
 h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  text-align: center;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 h3 {
-  font-size: 1em;
-  font-weight: bold;
-  margin-top: 0.5%;
-  margin-bottom: 0.5%;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
 }
 p {
-  margin-top: 0.5%;
-  margin-bottom: 0.5%;
-  font-size: 1em;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	font-size: 1em;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 .btn {
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 1.5%;
-  margin-left: 0.5%;
-  border-color: #d4102b;
-  color: #d4102b;
-  background-color: #fff;
-  text-transform: uppercase;
-  border: solid;
-  border-width: 1px;
-  font-weight: bold;
-  font-family: sans-serif;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  width: 150px;
-  height: 40px;
-  line-height: 40px;
+	border-radius: 10px;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 1.5%;
+	margin-left: 50.0%;
+	border-color: #d4102b;
+	color: #d4102b;
+	background-color: #fff;
+	text-transform: uppercase;
+	border: solid;
+	border-width: 1px;
+	font-weight: bold;
+	font-family: sans-serif;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
 }
 .btn:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); border-color: #9FA8DA;
-  background-color: #d4102b;
-  border-color: #d4102b;
-  color: #fff;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); border-color: #9FA8DA;
+	background-color: #d4102b;
+	border-color: #d4102b;
+	color: #fff;
 }
 .btn:active {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.1s cubic-bezier(.25,.8,.25,1);
-  background-color: #8a8a88;
-  border-color: #8a8a88;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.1s cubic-bezier(.25,.8,.25,1);
+	background-color: #8a8a88;
+	border-color: #8a8a88;
 }
 
 #campo {
-  border: none;
-  border-bottom: 2px solid #d4102b;
-  float: left;
-  margin-top: 1.5%;
-  margin-left: 1.5%;
-  /* min-width: 150px; */
-  /* max-width: 150px; */
-  height: 40px;
-  text-align: center;
-  width: 198.5%;
+	border: none;
+	border-bottom: 2px solid #d4102b;
+	float: left;
+	margin-top: 1.5%;
+	margin-left: 1.5%;
+	/* min-width: 150px; */
+	/* max-width: 150px; */
+	height: 40px;
+	text-align: center;
+	width: 198.5%;
 }
 
 #campo:focus{
-  box-shadow: 0 0 0 0;
-  border: 0 none;
-  border-bottom: 2px solid #d4102b;
-  outline: 0;
+	box-shadow: 0 0 0 0;
+	border: 0 none;
+	border-bottom: 2px solid #d4102b;
+	outline: 0;
 }
 
 .parent2 {
-  margin-left: 10%;
-  top: 5%;
-  left: 5%;
-  position:fixed;
-  display:block;
-  width:100px;
-  height:100px;
-  background-color:transparent;
-  border-radius:50%;
-  z-index:20;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	margin-left: 10%;
+	top: 5%;
+	left: 5%;
+	position:fixed;
+	display:block;
+	width:100px;
+	height:100px;
+	background-color:transparent;
+	border-radius:50%;
+	z-index:20;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 .test1 {
-  cursor: pointer;
-  width:60%;
-  height:60%;
-  background-color:dimGray;
-  border-radius:50%;
-  position:absolute;
-  color:white;
-  text-align:center;
-  line-height:70px;
-  top:20%;
-  left:25%;
-  z-index:19;
-  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
-  position:absolute;
+	cursor: pointer;
+	width:60%;
+	height:60%;
+	background-color:dimGray;
+	border-radius:50%;
+	position:absolute;
+	color:white;
+	text-align:center;
+	line-height:70px;
+	top:20%;
+	left:25%;
+	z-index:19;
+	transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+	position:absolute;
 }
 .test2 {
-  cursor: pointer;
-  width:60%;
-  height:60%;
-  background-color:dimGray;
-  border-radius:50%;
-  position:absolute;
-  color:white;
-  text-align:center;
-  line-height:70px;
-  top:20%;
-  left:25%;
-  z-index:19;
-  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .2s;
+	cursor: pointer;
+	width:60%;
+	height:60%;
+	background-color:dimGray;
+	border-radius:50%;
+	position:absolute;
+	color:white;
+	text-align:center;
+	line-height:70px;
+	top:20%;
+	left:25%;
+	z-index:19;
+	transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .2s;
 }
 .test3 {
-  cursor: pointer;
-  width:60%;
-  height:60%;
-  background-color:dimGray;
-  border-radius:50%;
-  position:absolute;
-  color:white;
-  text-align:center;
-  line-height:70px;
-  top:20%;
-  left:25%;
-  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .4s;  
+	cursor: pointer;
+	width:60%;
+	height:60%;
+	background-color:dimGray;
+	border-radius:50%;
+	position:absolute;
+	color:white;
+	text-align:center;
+	line-height:70px;
+	top:20%;
+	left:25%;
+	transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .4s;  
 }
 .test4 {
-  cursor: pointer;
-  width:60%;
-  height:60%;
-  background-color:dimGray;
-  border-radius:50%;
-  position:absolute;
-  color:white;
-  text-align:center;
-  line-height:70px;
-  top:20%;
-  left:25%;
-  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .6s;  
+	cursor: pointer;
+	width:60%;
+	height:60%;
+	background-color:dimGray;
+	border-radius:50%;
+	position:absolute;
+	color:white;
+	text-align:center;
+	line-height:70px;
+	top:20%;
+	left:25%;
+	transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .6s;  
 }
 .mask2 {
-  margin-left: 10%;
-  top: 5%;
-  left: 5%;
-  width:100px;
-  height:100px;
-  background:black;
-  border-radius:50%;
-  position:absolute;
-  z-index:21;
-  color:white;
-  text-align:center;
-  line-height:120px;
-  cursor:pointer;
-  position:fixed;
+	margin-left: 10%;
+	top: 5%;
+	left: 5%;
+	width:100px;
+	height:100px;
+	background:black;
+	border-radius:50%;
+	position:absolute;
+	z-index:21;
+	color:white;
+	text-align:center;
+	line-height:120px;
+	cursor:pointer;
+	position:fixed;
 }
 
 #icones{
 
-      margin-top: 20%;
+	margin-top: 20%;
 }
 
 #statuslivro{
-  width: 30%;
-  height: 100%;
-  border: 2px solid #d4102b;
-  margin-top: 2%;
-  text-align: center;
-  display:none;
+	width: 30%;
+	height: 100%;
+	border: 2px solid #d4102b;
+	margin-top: 2%;
+	text-align: center;
+	display:none;
 }
 
 .hide, .hide2{
-  display:none;
+	display:none;
 }
 
 
 label {
-  margin-left: 10%;
+	margin-left: 10%;
 }
 </style>
 </head>
 <body>
 
 
-  <!-- Teste menu  -->
-  <table height="700px" class="tabela">
-    <!-- Teste menu  -->
-    <div class="parent2">
-      <div class="test1"><i class="fa fa-user fa-2x" id="icones"></i></div>
-      <div class="test2"><i class="fas fa-book fa-2x" id="icones"></i></i></div>
-      <div class="test3"><i class="fas fa-shopping-cart fa-2x" id="icones"></i></i></div>
-      <div class="test4"><i class="fab fa-forumbee fa-2x" id="icones"></i></i></div>
-      <div class="mask2"><i class="fas fa-bars fa-3x" id="icones"></i></div>
-    </div>
-    <tr>
-      <td>
-        <div class="content">
-          <div class="card card-1">
-            <center>
-              <h1>Procurar Livros</h1>
-              <hr>
-              <br>
-              <h3>Insira o título para retornar as
-              informações:</h3>
-              <table border="0">
-                <tr>
-                  <td><input placeholder="Título" name="Título" id="campo" class="form-control autocomplete"></td>
-                </tr>
+	<!-- Teste menu  -->
+	<table height="700px" class="tabela">
+		<!-- Teste menu  -->
+		<div class="parent2">
+			<div class="test1"><i class="fa fa-user fa-2x" id="icones"></i></div>
+			<div class="test2"><i class="fas fa-book fa-2x" id="icones"></i></i></div>
+			<div class="test3"><i class="fas fa-shopping-cart fa-2x" id="icones"></i></i></div>
+			<div class="test4"><i class="fab fa-forumbee fa-2x" id="icones"></i></i></div>
+			<div class="mask2"><i class="fas fa-bars fa-3x" id="icones"></i></div>
+		</div>
+		<tr>
+			<td>
+				<div class="content">
+					<div class="card card-1">
+						<center>
+							<h1>Buscar Livros</h1>
+							<hr>
+							<br>
+							<h3>Insira o título para retornar as
+							informações:</h3>
+							<table border="0">
+								<tr>
+									<td><input placeholder="Título" name="Título" id="campo" class="form-control autocomplete"></td>
+								</tr>
+								<tr>
+									<form action="#">
+									<td>
+										
+											<label>
+												<input id="um" name="group1" type="radio" value="1" checked />
+												<span>Emprestar</span>
+											</label>
+										</td>
+										<td>
+											<label>
+												<input id="zero" name="group1" type="radio" value="0"  />
+												<span>Indisponivel</span>
+											</label>
+									
+									</td>
+										</form>
+								</tr>
+								<tr>
+									<td><div class="btn" id="add">Adicionar</div></td>
+								</tr>
+							</table>
+						</center>
 
+						<div class="hide">
+							<center>
+								<h3> Status do livro</h3>
+								<textarea class="hide" id="statuslivro" placeholder="Condição do Livro" cols="60" rows="5" ></textarea> 
+							</center>
+						</div>
+						<center> 
+							<button class="hide" id= "save" class="button button-large button-plain button-border button-circle"><i class="fas fa-save"></i></button>
+							<button class="hide" id="delete" class="button button-large button-plain button-border button-circle"><i class="fas fa-trash"></i></i></button>
+						</center>
 
-                <tr>
-                  <td>
-                    <form action="#">
-                      <label>
-                        <input id="um" name="group1" type="radio" value="1" checked />
-                        <span>Emprestar</span>
-                      </label>
-                    </td>
-                    <td>
-                      <label>
-                        <input id="zero" name="group1" type="radio" value="0"  />
-                        <span>Indisponivel</span>
-                      </label>
-                    </form>
-                  </td>
-                </tr>
-                <tr>
-
-
-                  <td><div class="btn" id="find">Buscar</div></td>
-                  <td><div class="btn" id="add">Adicionar</div></td>
-                </tr>
-              </table>
-            </center>
-
-            <div class="hide">
-              <center>
-                <h3> Status do livro</h3>
-                <textarea class="hide" id="statuslivro" placeholder="Condição do Livro" cols="60" rows="5" ></textarea> 
-              </center>
-            </div>
-            <center> 
-              <button class="hide" id= "save" class="button button-large button-plain button-border button-circle"><i class="fas fa-save"></i></button>
-              <button class="hide" id="delete" class="button button-large button-plain button-border button-circle"><i class="fas fa-trash"></i></i></button>
-            </center>
-
-            <div id="home">
-              <h1>Informações</h1>
-              <hr>
-              <br>
-              <div class="img"><img src="" id="img1">
-              </div>
-              <h3>Título:</h3>
-              <p>
-                <div id="livro"></div>
-              </p>
-              <h3>Autor:</h3>
-              <p>
-                <div id="autor"></div>
-              </p>
-              <h3>Idioma:</h3>
-              <p>
-                <div id="idioma"></div>
-              </p>
-              <h3>Editora:</h3>
-              <p>
-                <div id="editora"></div>
-              </p>
-              <h3>Ano:</h3>
-              <p>
-                <div id="data"></div>
-              </p>
-              <h3>ISBN:</h3>
-              <p>
-                <div id="isbnlivro"></div>
-              </p>
-              <h3>Número de Páginas:</h3>
-              <p>
-                <div id="paginas"></div>
-              </p>
-              <h3>Descrição:</h3>
-              <p>
-                <div id="descricao"></div>
-              </p>
-            </div>
-          </center>  
-        </div>
-        <div class="hide2" id="livro">
-          <h1>Livro</h1>
-          <hr>
-          <br>
-          <h3>Liberação:</h3>
-          <p>
-            <div id="liberacao"></div>
-          </p>
-          <h3>ISBN:</h3>
-          <p>
-            <div id="isbn"></div>
-          </p>
-          <h3>Condição:</h3>
-          <p>
-            <div id="condicao"></div>
-          </p>
-          <h3>Usuário:</h3>
-          <p>
-            <div id="usuario"></div>
-          </p>
-        </center>  
-      </div>
-      <center>
-        <select class="hide" name="Usuários" id="funcionarios"></select>
-      </center>  
-    </body>
-    </html>
+						<div id="home">
+							<h1>Informações</h1>
+							<hr>
+							<br>
+							<div class="img"><img src="" id="img1">
+							</div>
+							<h3>Título:</h3>
+							<p>
+								<div id="livro"></div>
+							</p>
+							<h3>Autor:</h3>
+							<p>
+								<div id="autor"></div>
+							</p>
+							<h3>Idioma:</h3>
+							<p>
+								<div id="idioma"></div>
+							</p>
+							<h3>Editora:</h3>
+							<p>
+								<div id="editora"></div>
+							</p>
+							<h3>Ano:</h3>
+							<p>
+								<div id="data"></div>
+							</p>
+							<h3>ISBN:</h3>
+							<p>
+								<div id="isbnlivro"></div>
+							</p>
+							<h3>Número de Páginas:</h3>
+							<p>
+								<div id="paginas"></div>
+							</p>
+							<h3>Descrição:</h3>
+							<p>
+								<div id="descricao"></div>
+							</p>
+						</div>
+					</center>  
+				</div>
+				<div class="hide2" id="livro">
+					<h1>Livro</h1>
+					<hr>
+					<br>
+					<h3>Liberação:</h3>
+					<p>
+						<div id="liberacao"></div>
+					</p>
+					<h3>ISBN:</h3>
+					<p>
+						<div id="isbn"></div>
+					</p>
+					<h3>Condição:</h3>
+					<p>
+						<div id="condicao"></div>
+					</p>
+					<h3>Usuário:</h3>
+					<p>
+						<div id="usuario"></div>
+					</p>
+				</center>  
+			</div>
+			<center>
+				<select class="hide" name="Usuários" id="funcionarios"></select>
+			</center>  
+		</body>
+		</html>
 
 
 
