@@ -1,0 +1,135 @@
+body {
+	background-color: #efefef;
+}
+
+hr {
+	border: 1px solid #d4102b;
+}
+
+.img {
+	margin-left: 20%;
+	float: right;
+	height: auto;
+	width: auto;
+	border-width: 1px;
+}
+
+.tabela {
+	height: 50%;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 2%;
+}
+
+card-1 {
+	width: 250%;
+	float: left;
+	margin-top: 5%;
+	padding: 1.5%;
+	margin-left: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+	text-decoration: none;
+	display: block;
+	padding: 0px .4em;
+	line-height: 1.5;
+	min-height: 0;
+	font-weight: normal;
+}
+h1 {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+h2 {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+h3 {
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+}
+p {
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	font-size: 1em;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+.btn {
+	border-radius: 10px;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 1.5%;
+	margin-left: 50.0%;
+	border-color: #d4102b;
+	color: #d4102b;
+	background-color: #fff;
+	text-transform: uppercase;
+	border: solid;
+	border-width: 1px;
+	font-weight: bold;
+	font-family: sans-serif;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+}
+.btn:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); border-color: #9FA8DA;
+	background-color: #d4102b;
+	border-color: #d4102b;
+	color: #fff;
+}
+.btn:active {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.1s cubic-bezier(.25,.8,.25,1);
+	background-color: #8a8a88;
+	border-color: #8a8a88;
+}
+
+#campo {
+	border: none;
+	border-bottom: 2px solid #d4102b;
+	float: left;
+	margin-top: 1.5%;
+	margin-left: 1.5%;
+	/* min-width: 150px; */
+	/* max-width: 150px; */
+	height: 40px;
+	text-align: center;
+	width: 198.5%;
+}
+
+#campo:focus{
+	box-shadow: 0 0 0 0;
+	border: 0 none;
+	border-bottom: 2px solid #d4102b;
+	outline: 0;
+}
+
+
+#statuslivro{
+	width: 30%;
+	height: 100%;
+	border: 2px solid #d4102b;
+	margin-top: 2%;
+	text-align: center;
+	display:none;
+}
+
+.hide, .hide2{
+	display:none;
+}
+
+
+label {
+	margin-left: 10%;
+}

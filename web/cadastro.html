@@ -1,0 +1,74 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro</title>
+	<meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js'></script>
+	<script  src="js/scriptC.js"></script>
+	<script  src="js/scriptMenu.js"></script>
+
+
+	
+	
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css'>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+	<link rel="stylesheet" href="css/styleC.css">
+	<link rel="stylesheet" href="css/styleMenu.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+</head>
+<body>
+			<div class="parent2">
+			<a href="cadastro.html"><div class="test1"><i class="fa fa-user fa-2x" id="icones"></i></div></a>
+			<div class="test2"><i class="fas fa-book fa-2x" id="icones"></i></i></div>
+			<!--<div class="test4"><i class="fas fa-shopping-cart fa-2x" id="icones"></i></i></div> -->
+			<div class="test3"><i class="fab fa-forumbee fa-2x" id="icones"></i></i></div>
+			<div class="mask2"><i class="fas fa-bars fa-3x" id="icones"></i></div>
+		</div>
+	<body ng-controller="RegisterCtrl" ng-app="myApp">
+		<div class="container">
+			<div id="signup">
+				<div class="signup-screen">
+					<div class="space-bot text-center">
+						<h1>Cadastro</h1>
+						<div class="divider"></div>
+					</div>
+					<form class="form-register" method="post" name="register" novalidate>
+						<div class="input-field col s6">
+							<input id="nome" type="text" class="validate" required>
+							<label for="first-name" class="text">Primeiro Nome</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="nome2" type="text" class="validate" required>
+							<label for="last-name" class="text">Último Nome</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="re" type="text" class="validate" required>
+							<label for="re" class="text">Re</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="exp" type="text" class="validate" required>
+							<label for="exp" class="text">exp</label>
+						</div>
+						<div class="space-top text-center">
+							<button ng-disabled="form-register.$invalid" class="waves-effect waves-light btn done" id="addC">
+								<i class="material-icons left">done</i> Enviar
+							</button>
+							<button type="button" class="waves-effect waves-light btn cancel">
+								<i class="material-icons left">clear</i>Cancelar
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+
+
+</body>
+</html>
