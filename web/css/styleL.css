@@ -21,3 +21,16 @@ li {
 body {
   background: #EAEDF1;
 }
+
+h3{
+    color: black;
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+

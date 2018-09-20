@@ -3,6 +3,22 @@
     var isbn;
 
     $(document).ready(function() {
+
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://digito.azurewebsites.net/livro",
+        "method": "GET",
+        "headers": {
+          "Cache-Control": "no-cache",
+          "Postman-Token": "ce2e739c-53ea-4587-a604-5fe6f46ff8f4"
+        }
+      }
+
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+
   var typingTimer; //timer identifier
   var doneTypingInterval = 1; //time in ms, 1 second for example
   var json;
@@ -23,9 +39,7 @@
     //Exibir lista de livros do autocompletar
     function autocompletar() {
     	var ii = 0;
-
     	if (!!projects || !!json){
-
     		$( "#campo" ).autocomplete({
     			position: { my : "center bottom", at: "center top" },
     			source:json,
@@ -34,15 +48,12 @@
     				isbn = isbn["0"].attributes.value.value;
     				return buscaselecionado(isbn);
             //return monstra(isbn);
-
           }
         });
     		$('#campo').data( "ui-autocomplete" )._renderItem = function( ul, item ) {
     			var imagem;
-
     			var $li = $('<li >'),
     			$img = $('<img>');
-
     			if(!!projects.items[ii].volumeInfo.imageLinks){
     				imagem  = projects.items[ii].volumeInfo.imageLinks.smallThumbnail
     			}else{
@@ -67,8 +78,6 @@
     		}
     	}
     } 
-
-
     // Buscar através do titulo do livro 
     function busca(livros){
     	var settings = {
@@ -153,8 +162,6 @@
 
                       document.getElementById("img1").setAttribute("src",imagem);
 
-
-
                     }
 
     // Buscar funcionarios
@@ -222,9 +229,11 @@ $("#save").click(function(){
 		alert( response);
 	});
 
+
+
 });
 
 
-    
 
-  });
+
+});

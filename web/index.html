@@ -14,135 +14,122 @@
 	<script src = "js/script.js"></script>
 	<script src = "js/scriptMenu.js"></script>
 </head>
-
 <body>
-	<!--  menu  -->
-	<table height="700px" class="tabela">
-		<!-- Teste menu  -->
-		<div class="parent2">
-			<a href="cadastro.html"><div class="test1"><i class="fa fa-user fa-2x" id="icones"></i></div></a>
-			<div class="test2"><i class="fas fa-book fa-2x" id="icones"></i></i></div>
-			<!--<div class="test4"><i class="fas fa-shopping-cart fa-2x" id="icones"></i></i></div> -->
-			<div class="test3"><i class="fab fa-forumbee fa-2x" id="icones"></i></i></div>
-			<div class="mask2"><i class="fas fa-bars fa-3x" id="icones"></i></div>
-		</div>
-		<tr>
-			<td>
-				<div class="content">
-					<div class="card card-1">
-						<center>
-							<h1>Buscar Livros</h1>
-							<hr>
-							<br>
-							<h3>Insira o título para retornar as
-							informações:</h3>
-							<table border="0">
-								<td>
-									<input placeholder="Título" name="Título" id="campo" class="form-control autocomplete">
-									<tr>
-									</td>
-									<td>
-										<label>
-											<input id="um" name="group1" type="radio" value="1" checked />
-											<span>Emprestar</span>
-										</label>
-									</td>
-									<td>
-										<label>
-											<input id="zero" name="group1" type="radio" value="0"  />
-											<span>Indisponivel</span>
-										</label>
-
-									</td>
-
-								</tr>
-
+	<tr>
+		<td>
+			<div class="content">
+				<div class="card card-1">
+					<center>
+						<h1>Buscar Livros</h1>
+						<hr>
+						<br>
+						<h3>Insira o título para retornar as
+						informações:</h3>
+						<table border="0">
+							<td>
+								<input placeholder="Título" name="Título" id="campo" class="form-control autocomplete">
 								<tr>
-									<td>
-										<div class="btn" id="add">Adicionar</div>
-									</td>
-								</tr>
-							</table>
-						</center>
+								</td>
+								<td>
+									<label>
+										<input id="um" name="group1" type="radio" value="1" checked />
+										<span>Emprestar</span>
+									</label>
+								</td>
+								<td>
+									<label>
+										<input id="zero" name="group1" type="radio" value="0"  />
+										<span>Indisponivel</span>
+									</label>
 
-						<div class="hide">
-							<center>
-								<h3> Status do livro</h3>
-								<textarea class="hide" id="statuslivro" placeholder="Condição do Livro" cols="60" rows="5" ></textarea> 
-							</center>
-						</div>
-						<center> 
-							<button class="hide" id= "save" class="button button-large button-plain button-border button-circle"><i class="fas fa-save"></i></button>
-							<button class="hide" id="delete" class="button button-large button-plain button-border button-circle"><i class="fas fa-trash"></i></i></button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="btn" id="add">Adicionar</div>
+								</td>
+							</tr>
+						</table>
+					</center>
+
+					<div class="hide">
+						<center>
+							<h3> Status do livro</h3>
+							<textarea class="hide" id="statuslivro" placeholder="Condição do Livro" cols="60" rows="5" ></textarea> 
 						</center>
-						<div id="home">
-							<h1>Informações</h1>
-							<hr>
-							<br>
-							<div class="img"><img src="" id="img1">
-							</div>
-							<h3>Título:</h3>
-							<p>
-								<div id="livro"></div>
-							</p>
-							<h3>Autor:</h3>
-							<p>
-								<div id="autor"></div>
-							</p>
-							<h3>Idioma:</h3>
-							<p>
-								<div id="idioma"></div>
-							</p>
-							<h3>Editora:</h3>
-							<p>
-								<div id="editora"></div>
-							</p>
-							<h3>Ano:</h3>
-							<p>
-								<div id="data"></div>
-							</p>
-							<h3>ISBN:</h3>
-							<p>
-								<div id="isbnlivro"></div>
-							</p>
-							<h3>Número de Páginas:</h3>
-							<p>
-								<div id="paginas"></div>
-							</p>
-							<h3>Descrição:</h3>
-							<p>
-								<div id="descricao"></div>
-							</p>
+					</div>
+					<center> 
+						<button class="hide" id= "save" class="button button-large button-plain button-border button-circle"><i class="fas fa-save"></i></button>
+						<button class="hide" id="delete" class="button button-large button-plain button-border button-circle"><i class="fas fa-trash"></i></i></button>
+					</center>
+					<div id="home">
+						<h1>Informações</h1>
+						<hr>
+						<br>
+						<div class="img"><img src="" id="img1">
 						</div>
-					</center>  
-				</div>
-				<div class="hide2" id="livro">
-					<h1>Livro</h1>
-					<hr>
-					<br>
-					<h3>Liberação:</h3>
-					<p>
-						<div id="liberacao"></div>
-					</p>
-					<h3>ISBN:</h3>
-					<p>
-						<div id="isbn"></div>
-					</p>
-					<h3>Condição:</h3>
-					<p>
-						<div id="condicao"></div>
-					</p>
-					<h3>Usuário:</h3>
-					<p>
-						<div id="usuario"></div>
-					</p>
+						<h3>Título:</h3>
+						<p>
+							<div id="livro"></div>
+						</p>
+						<h3>Autor:</h3>
+						<p>
+							<div id="autor"></div>
+						</p>
+						<h3>Idioma:</h3>
+						<p>
+							<div id="idioma"></div>
+						</p>
+						<h3>Editora:</h3>
+						<p>
+							<div id="editora"></div>
+						</p>
+						<h3>Ano:</h3>
+						<p>
+							<div id="data"></div>
+						</p>
+						<h3>ISBN:</h3>
+						<p>
+							<div id="isbnlivro"></div>
+						</p>
+						<h3>Número de Páginas:</h3>
+						<p>
+							<div id="paginas"></div>
+						</p>
+						<h3>Descrição:</h3>
+						<p>
+							<div id="descricao"></div>
+						</p>
+					</div>
 				</center>  
 			</div>
-			<center>
-				<select class="hide" name="Usuários" id="funcionarios"></select>
+			<div class="hide2" id="livro">
+				<h1>Livro</h1>
+				<hr>
+				<br>
+				<h3>Liberação:</h3>
+				<p>
+					<div id="liberacao"></div>
+				</p>
+				<h3>ISBN:</h3>
+				<p>
+					<div id="isbn"></div>
+				</p>
+				<h3>Condição:</h3>
+				<p>
+					<div id="condicao"></div>
+				</p>
+				<h3>Usuário:</h3>
+				<p>
+					<div id="usuario"></div>
+				</p>
 			</center>  
-		</body>
-		</html>
+		</div>
+		<center>
+			<select class="hide" name="Usuários" id="funcionarios"></select>
+		</center>  
+	</body>
+	</html>
 
 
 
