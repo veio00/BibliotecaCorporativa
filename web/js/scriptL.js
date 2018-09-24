@@ -44,7 +44,7 @@
     $.ajax(settings).done(function (response) { 
       console.log(response);
       $("#listalivros").append(
-      "<li class=book"+livros+"><a href=''> <img src="+response.items[0].volumeInfo.imageLinks.smallThumbnail+"alt='' /></a></li>");
+      "<li class=bookEstilo class=book"+livros+"><a href=''> <img src="+response.items[0].volumeInfo.imageLinks.smallThumbnail+"alt='' /></a></li>");
          //alert(response.items[0].volumeInfo.title);
        }).fail(function (response) { 
         console.log(response);
