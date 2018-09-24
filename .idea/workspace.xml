@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="955f6462-3818-4919-82aa-8b5788e05d70" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/web/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/cadastro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/styleC.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/styleC.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/styleL.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/styleL.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/scriptC.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/scriptC.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/scriptL.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/scriptL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/livro.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/livro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -135,13 +129,14 @@
     <session id="1039031500">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.47" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -243,7 +238,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
+    <option name="x" value="213" />
+    <option name="y" value="148" />
     <option name="width" value="814" />
     <option name="height" value="867" />
   </component>
@@ -253,7 +249,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,8 +313,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -431,16 +427,17 @@
       <workItem from="1537193155801" duration="2485000" />
       <workItem from="1537204812246" duration="936000" />
       <workItem from="1537465672398" duration="588000" />
+      <workItem from="1537549664694" duration="1171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51279000" />
+    <option name="totallyTimeSpent" value="52450000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="814" height="867" extended-state="0" />
+    <frame x="213" y="148" width="814" height="867" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2254642" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23076923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
