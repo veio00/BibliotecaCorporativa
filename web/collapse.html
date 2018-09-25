@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Collapsible</title>
+  <script src='https://code.jquery.com/jquery-2.0.0.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js'></script>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css'>
+  <script  src="js/colapse.js"></script>
+  <script src = "js/scriptL.js"></script>
+  <link rel="stylesheet" href="css/styleL.css">
+  <link rel="stylesheet" href="css/styleL2.css">
+</head>
+<body>
+  <div class="container">
+    <br /><br />
+    <a class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i>Mostrar Todos</a>
+    <a class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i>Esconder Todos</a>
+    <br /><br />
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header"><i class="mdi-navigation-chevron-right"></i>Meus Livros</a></div>
+        <div class="collapsible-body">
+
+          <ul id="listalivros" class="book-list">
+            <li class="bookEstilo"><a href="">
+              <img src="https://s3.amazonaws.com/titlepages.leanpub.com/hands-on-nodejs/large?1352289061" alt="" />
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-navigation-chevron-right"></i>Reservados</div>
+        <div class="collapsible-body"><p>Livros Reservados</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="mdi-navigation-chevron-right"></i>Emprestados</div>
+        <div class="collapsible-body"><p>Livros Emprestados</div>
+        </li>
+      </ul>
+    </div>
+
+
+  </body>
+  </html>

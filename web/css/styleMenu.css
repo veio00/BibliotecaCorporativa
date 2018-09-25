@@ -6,7 +6,6 @@ Menu
 
 @font-face {
     font-family:Socialico;
-    src:url('https://github.com/benaston/express-example/blob/master/public/fonts/socialico.ttf?raw=true');
     font-style:normal;
     font-weight:normal;
 }
@@ -49,12 +48,12 @@ nav ul li {
     transition: transform 500ms, background-color 500ms, color 500ms;
 }
 
-nav ul li:nth-child(1) { background-color: #00aced;}
-nav ul li:nth-child(2) { background-color: #3b5998;}
-nav ul li:nth-child(3) { background-color: #517fa4;}
-nav ul li:nth-child(4) { background-color: #007bb6;}
-nav ul li:nth-child(5) { background-color: #cb2027;}
-nav ul li:nth-child(6) { background-color: #ea4c89;}
+nav ul li:nth-child(1) { background-color: black;}
+nav ul li:nth-child(2) { background-color: white;}
+nav ul li:nth-child(3) { background-color: gray;}
+nav ul li:nth-child(4) { background-color: #00aced;}
+nav ul li:nth-child(5) { background-color: #00aced;}
+nav ul li:nth-child(6) { background-color: #00aced;}
 
 nav ul li:hover {
     background-color: #C1232D;
@@ -66,15 +65,20 @@ nav ul li span {
     display:block;
     font-family: Socialico;
     position: absolute;
-    font-size:1.5em;
+    font-size:1.0em;
     line-height: 1.25em;
     height:1.0em;
     top:0; bottom:0;
     margin:auto;
-    right: 0.16666666666667em;
+    right: 0.50em;
     color: #F8F6FF;
 }
 
+.letra{
+
+    color: black;
+
+}
 a {
     color: #FFF;
     text-decoration: none;

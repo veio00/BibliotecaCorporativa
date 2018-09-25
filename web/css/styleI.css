@@ -69,6 +69,7 @@ body.is-focus {
 }
 
 .title-container {
+  color: white;
   position: absolute;
   top: 38%;
   left: 50%;
@@ -97,7 +98,7 @@ body.is-focus {
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   transition-delay: 0.25s;
   margin: 0;
-  color: #6078EA;
+  color: white;
 }
 .is-focus .title-container .title {
   -webkit-transform: translateY(0);
