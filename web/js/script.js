@@ -7,7 +7,7 @@ $(document).ready(function () {
   salvaLivro();
 
   var typingTimer; //timer identifier
-  var doneTypingInterval = 1000; //time in ms, 1 second for example
+  var doneTypingInterval = 1; //time in ms, 1 second for example
   var json;
   //on keyup, start the countdown
   $('#campo').keypress(function () {
@@ -32,25 +32,7 @@ $(document).ready(function () {
 });
 
 //======================================== metodos ==================================================
-
-//busca todos os livros cadastrados no banco coisa do @Andre 
-function buscaLivroBase() {
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://digito.azurewebsites.net/livro",
-    "method": "GET",
-    "headers": {
-      "Cache-Control": "no-cache",
-      "Postman-Token": "ce2e739c-53ea-4587-a604-5fe6f46ff8f4"
-    }
-  }
-
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
-}
-//Busca todos os usuarios em banco
+//Busca todos os usuarios no banco
 function buscaFuncionario() {
   var settings = {
     "async": true,
@@ -75,7 +57,7 @@ function buscaFuncionario() {
     $("#funcionarios").append(_htmlOptions);
 
   });
-}
+};
 //aonde o autocompletar faz a magica
 function autocompletar() {
   var ii = 0;
