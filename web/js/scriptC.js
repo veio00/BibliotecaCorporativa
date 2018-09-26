@@ -27,10 +27,10 @@
  	
 
  	
- 	$("#cls").click(function(){
- 		$('#form')[0].reset();
+ 	//$("#cls").click(function(){
+ 	//	$('#form')[0].reset();
 
- 	});
+ 	//});
  });
 
 

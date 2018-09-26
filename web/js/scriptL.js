@@ -1,20 +1,54 @@
- $(document).ready(function() {
-  buscalivro();
+$(document).ready(function() {
   buscaFuncionario();
 });
 
 //======================================== metodos ==================================================
-
-//Busca livro do usuário
-function buscalivro(livros){
+//Busca todos os usuarios no banco
+function buscaFuncionario() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://digito.azurewebsites.net/livro/",
+    "url": "https://digito.azurewebsites.net/funcionario",
     "method": "GET",
     "headers": {
       "Cache-Control": "no-cache",
-      "Postman-Token": "ce2e739c-53ea-4587-a604-5fe6f46ff8f4"
+      "Postman-Token": "1a508f45-607e-4d69-968f-cc75c86d755a"
+    }
+  }
+
+  //preenche funcionarios
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    var _htmlOptions = "";
+
+    $.each(response, function (i, response) {
+      _htmlOptions += "<option value='" + response.idFuncionario + "'>" + response.nome + "</option>";
+
+    });
+
+    $("#funcionarios").append(_htmlOptions);
+    buscalivro($("#funcionarios").val());
+
+  });
+
+  // Mudar livro corresponde ao funcionario selecionado li
+  $("#funcionarios").change(function(){
+   $("#listalivros").empty();
+   buscalivro($("#funcionarios").val());
+
+
+ });
+
+//Busca livro do usuário
+function buscalivro(id){
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://digito.azurewebsites.net/livro/"+id,
+    "method": "GET",
+    "headers": {
+      "Cache-Control": "no-cache",
+      "Postman-Token": "707c34f8-ae28-41b7-bfcb-9b5b2a6692a7"
     }
   }
 
@@ -23,8 +57,6 @@ function buscalivro(livros){
 
     var livrosisbn = "";
     $.each(response,function(i,response){
-
-
      $("#livros").append("<option value='"+response.idlivro+"'>"+response.isbn+"</option>");
      buscaimg(response.isbn);
      console.log(response.isbn);
@@ -59,30 +91,6 @@ function buscaimg(livros){
 
 };
 
-//Busca todos os usuarios no banco
-function buscaFuncionario() {
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://digito.azurewebsites.net/funcionario",
-    "method": "GET",
-    "headers": {
-      "Cache-Control": "no-cache",
-      "Postman-Token": "1a508f45-607e-4d69-968f-cc75c86d755a"
-    }
-  }
 
-  //preenche funcionarios
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-    var _htmlOptions = "";
-
-    $.each(response, function (i, response) {
-      _htmlOptions += "<option value='" + response.idFuncionario + "'>" + response.nome + "</option>";
-    });
-
-    $("#funcionarios").append(_htmlOptions);
-
-  });
 };
 
