@@ -47,6 +47,31 @@ public class BancoReserva {
         }
     }
 
+    public static ArrayList<Reserva> carrega_Reserva(int funcionario) throws SQLException {
+        Connection conn = ConexaoBanco.open();
+
+        try {
+            ResultSet rs = executeQuery("Select * from Reserva where Solicitante = "+ funcionario,conn);
+            ArrayList<Reserva> lr = new ArrayList<Reserva>();
+
+            while (rs.next()) {
+                Reserva r = new Reserva();
+                r.setIdReserva(rs.getInt("idReserva"));
+                r.setDatasSolicitada(rs.getString("dataSolicitada"));
+                r.setEstadoReserva(rs.getInt("estadoReserva"));
+                r.setLivroReservado(rs.getInt("livroReservado"));
+                r.setSolicitante(rs.getInt("Solicitante"));
+                lr.add(r);
+
+            }
+
+            return lr;
+        } finally {
+            ConexaoBanco.close(conn);
+        }
+    }
+
+
     public static boolean salva_Reserva(Reserva reserva) throws SQLException {
 
         return ConexaoBanco.executeCommand("Insert into Reserva (dataSolicitada,estadoReserva,livroReservado,Solicitante) Values ('" + reserva.getDatasSolicitada() + "',"

@@ -36,6 +36,12 @@ public class ReservaController {
         return carrega_Reserva();
     }
 
+    @GetMapping("/reserva/{funcionario}")
+    public ArrayList<Reserva> carregaReserva(@PathVariable("funcionario") int funcionario) throws SQLException {
+        return carrega_Reserva(funcionario);
+    }
+
+
     @RequestMapping(value = "/salvaReserva", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean salvaReserva(@RequestBody Reserva reserva) throws SQLException {
 

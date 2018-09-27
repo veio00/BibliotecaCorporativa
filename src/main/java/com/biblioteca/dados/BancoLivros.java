@@ -56,7 +56,7 @@ public class BancoLivros {
         try {
 
             ArrayList<Livro> lista = new ArrayList<>();
-            ResultSet rset = executeQuery("Select * from Livro where Usuario = " + Funcionario + "", conn);
+            ResultSet rset = executeQuery("Select * from Livro where usuario = " + Funcionario + "", conn);
 
             while (rset.next()) {
 
@@ -75,6 +75,8 @@ public class BancoLivros {
             ConexaoBanco.close(conn);
         }
     }
+
+
 
     public static ArrayList<Livro> carrega_Livros_Esp(int livro) throws SQLException {
 
