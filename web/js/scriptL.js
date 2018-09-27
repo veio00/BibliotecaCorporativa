@@ -38,7 +38,10 @@ function buscaFuncionario() {
   // Mudar livro corresponde ao funcionario selecionado li
   $("#funcionarios").change(function(){
    $("#listalivros").empty();
+   $("#Reservados").empty();
    buscalivro($("#funcionarios").val());
+   reservaUsuario($("#funcionarios").val());
+
 
  });
 
