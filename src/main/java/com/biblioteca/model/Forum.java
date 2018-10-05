@@ -13,7 +13,7 @@ public class Forum {
     
   public int idForum;
   public String descricao;
-  public int iSBNref;
+  public String iSBNref;
 
     /**
      * @return the idForum
@@ -46,14 +46,14 @@ public class Forum {
     /**
      * @return the iSBNref
      */
-    public int getiSBNref() {
+    public String getiSBNref() {
         return iSBNref;
     }
 
     /**
      * @param iSBNref the iSBNref to set
      */
-    public void setiSBNref(int iSBNref) {
+    public void setiSBNref(String iSBNref) {
         this.iSBNref = iSBNref;
     }
 
