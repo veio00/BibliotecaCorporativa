@@ -36,28 +36,7 @@ $(document).ready(function () {
 
 //======================================== metodos ==================================================
 //Busca todos os usuarios no banco
-function buscaFuncionario() {
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost:8080/salvaForum",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json",
-      "cache-control": "no-cache",
-      "Postman-Token": "57345832-7cfe-47e4-aa0f-5bcfff73a903"
-    },
-    "processData": false,
-    "data": "    {\n        \"descricao\":\"Vidas secas\",\n        \"iSBNref\": \"978850\"\n    }"
-  }
-
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
-
-
-
-  
+function buscaFuncionario() {  
   var settings = {
     "async": true,
     "crossDomain": true,
