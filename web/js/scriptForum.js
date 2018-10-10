@@ -64,7 +64,7 @@ function buscaimg(livros){
 				</li>\
 				<li class='o-bar-item'>\
 				<span class='o-bar-info'>\
-				<svg'class='o-icon o-bar-info-icon'><use xlink:href='#replies'></use></svg>\
+				<svg class='o-icon o-bar-info-icon'><use xlink:href='#replies'></use></svg>\
 				<span class='o-bar-item-text'>196</span>\
 				</span>\
 				</li>\

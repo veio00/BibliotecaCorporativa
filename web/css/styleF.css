@@ -61,3 +61,30 @@ img
     width: 100%;
 }
 
+
+
+.wrap {
+    margin: 16px 0;
+}
+
+section {
+    margin: 1rem 0;
+}
+
+h5 {
+    margin-bottom: 0;
+}
+
+.icon-display {
+    list-style: none;
+}
+
+.icon-display li a {
+    display: block;
+    width: 300px;
+    margin-bottom: 0.5rem;
+}
+
+.icon-display-wip {
+    display: none;
+}

@@ -46,6 +46,7 @@ button{
   background-color:#0e7ec7;
   color:#fff;
   float:right;
+  cursor: pointer;
 }
 .viewCmnt{
   clear:both;
