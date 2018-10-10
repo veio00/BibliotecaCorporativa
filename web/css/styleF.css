@@ -1,0 +1,63 @@
+#text1 {
+    position: absolute;
+    /* position: absolute; */
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    letter-spacing: 0.0178571429em;
+    color: #212121;
+    margin: 0.5rem 0 0;
+    margin-left: 30%;
+    margin-top: 15%;
+}
+
+
+#text2 {
+    position: absolute;
+    /* position: absolute; */
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    letter-spacing: 0.0178571429em;
+    color: #212121;
+    margin: 0.5rem 0 0;
+    margin-left: 30%;
+    margin-top: 25%;
+}
+
+
+#caixa {
+    -webkit-flex: 1 1 auto;
+    left: 85%;
+    position: absolute;
+
+    
+}
+
+#caixaLivro {
+    width: 50%;
+    height: 300px;
+    float: left; 
+    
+    
+}
+
+#footer{
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0 0 2px 2px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+img
+{
+    width: 27%;
+
+}
+
+#listaforuns{
+
+    width: 100%;
+}
+
