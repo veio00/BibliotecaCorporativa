@@ -51,8 +51,8 @@ nav ul li {
 
 nav ul li:nth-child(1) { background-color: black;}
 nav ul li:nth-child(2) { background-color: white;}
-nav ul li:nth-child(3) { background-color: gray;}
-nav ul li:nth-child(4) { background-color: #00aced;}
+nav ul li:nth-child(3) { background-color: black;}
+nav ul li:nth-child(4) { background-color: white;}
 nav ul li:nth-child(5) { background-color: #00aced;}
 nav ul li:nth-child(6) { background-color: #00aced;}
 
@@ -85,6 +85,16 @@ a {
     text-decoration: none;
 }
 
+img{
+
+
+    width: 20%;
+    margin-left: 150px;
+}
+.img2{
+
+    width: 18%;
+}
 
 /*
 @font-face {
