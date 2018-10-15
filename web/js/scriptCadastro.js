@@ -1,13 +1,13 @@
- $(document).ready(function() {
+$(document).ready(function () {
+	enviar();
 
- 	
- });
+});
 
 //======================================== metodos ==================================================
-function enviar(){
-	$("#addC").click(function(){
-		var nome =document.getElementById("nome").value
-		var nome2 =document.getElementById("nome2").value
+function enviar() {
+	$("#addC").click(function () {
+		var nome = document.getElementById("nome").value
+		var nome2 = document.getElementById("nome2").value
 		var re = document.getElementById("re").value
 		var exp = document.getElementById("exp").value
 		var settings = {
@@ -21,10 +21,10 @@ function enviar(){
 				"Postman-Token": "b193ad72-9a51-4b2f-abc0-03717a430aee"
 			},
 			"processData": false,
-			"data":     '{"nome":"'+nome+' '+nome2+'","re":"'+re+'","exp":'+exp+'}'
+			"data": '{"nome":"' + nome + ' ' + nome2 + '","re":"' + re + '","exp":' + exp + '}'
 		}
 
-		$.ajax(settings).done(function(response) {
+		$.ajax(settings).done(function (response) {
 			console.log(response);
 			confirm("Cadastrado com sucesso");
 
