@@ -1,8 +1,8 @@
 $(document).ready(function () {
 	carregarForum();
+	
 });
 
-//======================================== metodos ==================================================
 function carregarForum(){
 	var settings = {
 		"async": true,
@@ -25,7 +25,6 @@ function carregarForum(){
 	});
 
 }
-
 
 // Buscar livro pelo isbn
 function buscaimg(livros){
@@ -70,9 +69,9 @@ function buscaimg(livros){
 				</li>\
 				</ul>\
 				<ul class='o-bar-right'>\
-				<li class='o-bar-item'>\
-				<a class='o-bar-action' href='' style='color: ' href='' data-toggle='tooltip' data-placement='top' title='Re: ukyuk, by hanakin, 1485294359'>\
-				<svg  class='o-icon o-bar-action-icon'><use xlink:href='#last-page'></use></svg>\
+				<li class='o-bar-item '>\
+				<a class='o-bar-action'  href='' style='color: ' href='' data-toggle='tooltip' data-placement='top' title='Re: ukyuk, by hanakin, 1485294359'>\
+				<svg  class='o-icon o-bar-action-icon'><use xlink:href=''></use></svg>\
 				</a>\
 				</li>\
 				</ul>\
@@ -89,9 +88,3 @@ function buscaimg(livros){
 	});
 
 };
-
-
-
-
-
-

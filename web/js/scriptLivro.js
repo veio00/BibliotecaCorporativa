@@ -91,7 +91,8 @@ function buscaFuncionario() {
 
       $('.selecionado').click(function () {
         var selecao = $(this).attr('value')
-        // alert(selecao)
+        //  alert(selecao)
+       
         buscaSelecao(selecao);
       });
     }).fail(function (response) {
@@ -167,6 +168,7 @@ function buscaimgReservado(livros) {
     $('.selecionado').click(function () {
       var selecao = $(this).attr('value')
       // alert(selecao)
+  
       buscaSelecao(selecao);
 
     });
@@ -192,8 +194,6 @@ function collapseAll() {
 // Modal
 
 function buscaSelecao(selecao) {
-  var link = "https://www.googleapis.com/books/v1/volumes?q="+selecao;
-
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -207,7 +207,7 @@ function buscaSelecao(selecao) {
   }
 
   $.ajax(settings).done(function (response) {
-     console.log(response);
+    //  console.log(response);
     // console.log(response.items[0].volumeInfo.title)
     // console.log(response.items[0].volumeInfo.authors)
     // console.log(response.items[0].volumeInfo.description)

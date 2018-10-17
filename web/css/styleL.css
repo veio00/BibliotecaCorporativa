@@ -134,7 +134,7 @@ h3{
   background-color: #fff;
   max-width: 400px;
   width: 400px;
-  height: auto;
+  height: 400px;
   padding: 10px 30px;
   position: fixed;
   left: calc(50% - 200px);
@@ -145,6 +145,8 @@ h3{
   cursor: auto;
   visibility: visible;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+  overflow: auto;
+  
 }
 @media (max-width: 400px) {
   .modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {

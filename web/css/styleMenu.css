@@ -10,7 +10,7 @@ Menu
     font-weight:normal ; 
 }
 
-nav {
+.nav1 {
     font-size: 2.0em;
     line-height: 1.0em;
     color: white;
@@ -24,13 +24,13 @@ nav {
     left: -4.5em;
 }
 
-nav ul {
+.nav1 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
+.nav1 ul li {
     background-color: blue ;
     height: 1.0em;
     padding: 0.25em;
@@ -43,20 +43,20 @@ nav ul li {
     transition: transform 500ms, background-color 500ms, color 500ms;
 }
 
-nav ul li:nth-child(1) { background-color: black;}
-nav ul li:nth-child(2) { background-color: white;}
-nav ul li:nth-child(3) { background-color: black;}
-nav ul li:nth-child(4) { background-color: white;}
-nav ul li:nth-child(5) { background-color: #00aced;}
-nav ul li:nth-child(6) { background-color: #00aced;}
+.nav1 ul li:nth-child(1) { background-color: black;}
+.nav1 ul li:nth-child(2) { background-color: white;}
+.nav1 ul li:nth-child(3) { background-color: black;}
+.nav1 ul li:nth-child(4) { background-color: white;}
+.nav1 ul li:nth-child(5) { background-color: #00aced;}
+.nav1 ul li:nth-child(6) { background-color: #00aced;}
 
-nav ul li:hover {
+.nav1 ul li:hover {
     background-color: #C1232D;
     -webkit-transform: translateX(4.5em);
     transform: translateX(4.5em);
 }
 
-nav ul li span {
+.nav1 ul li span {
     display:block;
     font-family: Socialico;
     position: absolute;
