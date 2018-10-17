@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Livro</title>
-  <script src='https://code.jquery.com/jquery-2.0.0.js'></script>
+  <!-- <script src='https://code.jquery.com/jquery-2.0.0.js'></script> -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js'></script>
   <script src="js/scriptLivro.js"></script>
+  <link rel="stylesheet" href="css/styleMenu.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css'>
   <link rel="stylesheet" href="css/styleL.css">
-
 </head>
 
 <body>
@@ -38,7 +39,6 @@
       </li>
   </div>
 
-
   <!-- Modal -->
   <div class="modal-container">
     <input id="modal-toggle" type="checkbox">
@@ -48,6 +48,8 @@
 
       <h5 id="titulo">Titulo</h5>
       <div id="livro"></div>
+
+      <img id="img1" class='modalImg' src="" alt="">
 
       <h5>Autor:</h5>
       <div id="autor"></div>
@@ -61,18 +63,18 @@
       <h5>Ano:</h5>
       <div id="data"></div>
 
+      <h5>Descrição:</h5>
+      <div id="descricao"></div>
+
       <!-- <h5>ISBN:</h5>
           <div id="isbnlivro"></div>
         
         <h5>Número de Páginas:</h5>
           <div id="paginas"></div> -->
 
-      <!-- <h5>Descrição:</h5> -->
-
 
     </div>
   </div>
-
 </body>
 
 </html>

@@ -192,6 +192,8 @@ function collapseAll() {
 // Modal
 
 function buscaSelecao(selecao) {
+  var link = "https://www.googleapis.com/books/v1/volumes?q="+selecao;
+
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -205,22 +207,24 @@ function buscaSelecao(selecao) {
   }
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
-    console.log(response.items[0].volumeInfo.title)
-    console.log(response.items[0].volumeInfo.authors)
-    console.log(response.items[0].volumeInfo.description)
-    console.log(response.items[0].volumeInfo.language)
-    console.log(response.items[0].volumeInfo.publisher)
-    console.log(response.items[0].volumeInfo.publishedDate)
+     console.log(response);
+    // console.log(response.items[0].volumeInfo.title)
+    // console.log(response.items[0].volumeInfo.authors)
+    // console.log(response.items[0].volumeInfo.description)
+    // console.log(response.items[0].volumeInfo.language)
+    // console.log(response.items[0].volumeInfo.publisher)
+    // console.log(response.items[0].volumeInfo.publishedDate)
+    // console.log(response.items[0].volumeInfo.imageLinks.smallThumbnail)
+    
 
-
-
+     var imagem  = response.items[0].volumeInfo.imageLinks.smallThumbnail
      document.getElementById("livro").innerHTML = response.items[0].volumeInfo.title;
      document.getElementById("autor").innerHTML = response.items[0].volumeInfo.authors;
-    //  document.getElementById("descricao").innerHTML = response.items[0].volumeInfo.description;
+     document.getElementById("descricao").innerHTML = response.items[0].volumeInfo.description;
      document.getElementById("idioma").innerHTML = response.items[0].volumeInfo.language;
      document.getElementById("editora").innerHTML = response.items[0].volumeInfo.publisher;
      document.getElementById("data").innerHTML = response.items[0].volumeInfo.publishedDate;
+     document.getElementById("img1").setAttribute("src", imagem);
     // console.log(response.items[0].volumeInfo.industryIdentifiers);
     // isbnlivro = document.getElementById("isbnlivro").innerHTML = response.items[0].volumeInfo.industryIdentifiers["0"].identifier;
     // document.getElementById("paginas").innerHTML = response.items[0].volumeInfo.pageCount;

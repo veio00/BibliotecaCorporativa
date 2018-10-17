@@ -5,15 +5,9 @@ Menu
 */
 
 @font-face {
-    font-family:Socialico;
+    font-family:Socialico !important;
     font-style:normal;
-    font-weight:normal;
-}
-
-body {
-    font: normal 1.0em Impact, sans-serif;
-    background: #EAEDF1;
-
+    font-weight:normal ; 
 }
 
 nav {
@@ -37,7 +31,7 @@ nav ul {
 }
 
 nav ul li {
-    background-color: blue;
+    background-color: blue ;
     height: 1.0em;
     padding: 0.25em;
     position: relative;
@@ -80,18 +74,19 @@ nav ul li span {
     color: black;
 
 }
-a {
+
+.aMenu {
     color: #FFF;
     text-decoration: none;
+    font: normal 1.0em Impact, sans-serif;
 }
 
-img{
-
-
+.menuImg{
     width: 20%;
     margin-left: 150px;
 }
-.img2{
+
+.img2Menu{
 
     width: 18%;
 }

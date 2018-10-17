@@ -107,6 +107,8 @@ h3{
   height: 32px;
   padding-top: 9px;
   font-weight: normal;
+  
+ 
 }
 .modal-container .modal-content-btn:hover {
   color: #fff;
@@ -155,3 +157,13 @@ h5{
   font-size: 15px;
   font-weight: bolder;
 }
+
+.modalImg{
+  width: 80px;
+  height: 95px;
+  position: absolute;
+  margin-left: 65%;
+  margin-top: -5%;
+  padding: 5px 5px;
+}
+
