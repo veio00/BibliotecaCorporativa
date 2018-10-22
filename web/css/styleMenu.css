@@ -6,89 +6,89 @@ Menu
 
 @font-face {
     font-family:Socialico !important;
-    font-style:normal;
-    font-weight:normal ; 
+    font-style:normal !important;
+    font-weight:normal !important; 
 }
 
 .nav1 {
-    font-size: 2.0em;
-    line-height: 1.0em;
-    color: white;
+    font-size: 2.0em !important;
+    line-height: 1.0em !important;
+    color: white !important;
     
-    width:6em;
-    height: 9.0em;
+    width:6em !important;
+    height: 9.0em !important;
 
-    position:absolute;
-    top:0; bottom:0;
-    margin:auto;
-    left: -4.5em;
+    position:absolute !important;
+    top:0; bottom:0 !important;
+    margin:auto !important;
+    left: -4.5em !important;
 }
 
 .nav1 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .nav1 ul li {
-    background-color: blue ;
-    height: 1.0em;
-    padding: 0.25em;
-    position: relative;
+    background-color: blue !important;
+    height: 1.0em !important;
+    padding: 0.25em !important;
+    position: relative !important;
 
-    border-top-right-radius: 0.75em;
-    border-bottom-right-radius: 0.75em;
+    border-top-right-radius: 0.75em !important;
+    border-bottom-right-radius: 0.75em !important;
 
-    -webkit-transition: -webkit-transform 500ms, background-color 500ms, color 500ms;
-    transition: transform 500ms, background-color 500ms, color 500ms;
+    -webkit-transition: -webkit-transform 500ms, background-color 500ms, color 500ms !important;
+    transition: transform 500ms, background-color 500ms, color 500ms !important;
 }
 
-.nav1 ul li:nth-child(1) { background-color: black;}
-.nav1 ul li:nth-child(2) { background-color: white;}
-.nav1 ul li:nth-child(3) { background-color: black;}
-.nav1 ul li:nth-child(4) { background-color: white;}
-.nav1 ul li:nth-child(5) { background-color: #00aced;}
-.nav1 ul li:nth-child(6) { background-color: #00aced;}
+.nav1 ul li:nth-child(1) { background-color: black !important;}
+.nav1 ul li:nth-child(2) { background-color: white !important;}
+.nav1 ul li:nth-child(3) { background-color: black !important;}
+.nav1 ul li:nth-child(4) { background-color: white !important;}
+.nav1 ul li:nth-child(5) { background-color: #00aced !important;}
+.nav1 ul li:nth-child(6) { background-color: #00aced !important;}
 
 .nav1 ul li:hover {
-    background-color: #C1232D;
-    -webkit-transform: translateX(4.5em);
-    transform: translateX(4.5em);
+    background-color: #C1232D !important;
+    -webkit-transform: translateX(4.5em) !important;
+    transform: translateX(4.5em) !important;
 }
 
 .nav1 ul li span {
     display:block;
-    font-family: Socialico;
-    position: absolute;
-    font-size:1.0em;
-    line-height: 1.25em;
-    height:1.0em;
-    top:0; bottom:0;
-    margin:auto;
-    right: 0.50em;
-    color: #F8F6FF;
+    font-family: Socialico !important;
+    position: absolute !important;
+    font-size:1.0em !important;
+    line-height: 1.25em !important;
+    height:1.0em !important;
+    top:0; bottom:0 !important;
+    margin:auto !important;
+    right: 0.50em !important;
+    color: #F8F6FF!important;
 }
 
 .letra{
 
-    color: black;
+    color: black !important;
 
 }
 
 .aMenu {
-    color: #FFF;
-    text-decoration: none;
-    font: normal 1.0em Impact, sans-serif;
+    color: #FFF !important;
+    text-decoration: none !important;
+    font: normal 1.0em Impact, sans-serif !important;
 }
 
 .menuImg{
-    width: 20%;
-    margin-left: 150px;
+    width: 20% !important;
+    margin-left: 150px !important;
 }
 
 .img2Menu{
 
-    width: 18%;
+    width: 18% !important;
 }
 
 /*

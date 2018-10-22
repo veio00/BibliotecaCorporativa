@@ -168,7 +168,6 @@ function buscaimgReservado(livros) {
     $('.selecionado').click(function () {
       var selecao = $(this).attr('value')
       // alert(selecao)
-  
       buscaSelecao(selecao);
 
     });

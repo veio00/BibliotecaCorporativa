@@ -45,6 +45,7 @@ function buscaimg(livros){
 		console.log(response.items[0].volumeInfo.authors);
 		console.log(response.items[0].volumeInfo.imageLinks.smallThumbnail);
 		$.ajax(settings).done(function (response) { 
+		
 			$("#listaforuns").append("<div  id= 'caixaLivro'  class='c-forum t-forum'><a  id= 'caixa' class='t-forum-body'href=''>\
 				<span class='c-forum-media t-forum-media'><svg class='o-icon c-forum-media-icon-read t-forum-media-icon-read'>\
 				<use xlink:href='#forum'></use></svg></span>\
@@ -69,9 +70,9 @@ function buscaimg(livros){
 				</li>\
 				</ul>\
 				<ul class='o-bar-right'>\
-				<li class='o-bar-item '>\
-				<a class='o-bar-action'  href='' style='color: ' href='' data-toggle='tooltip' data-placement='top' title='Re: ukyuk, by hanakin, 1485294359'>\
-				<svg  class='o-icon o-bar-action-icon'><use xlink:href=''></use></svg>\
+				<li class='o-bar-item selecionadoForum'>\
+				<a class='o-bar-action '   data-toggle='tooltip' data-placement='top' title='Re: ukyuk, by hanakin, 1485294359'>\
+				<svg  class='o-icon o-bar-action-icon'><use xlink:href='#last-page'></use></svg>\
 				</a>\
 				</li>\
 				</ul>\
@@ -80,6 +81,14 @@ function buscaimg(livros){
 				</div>\
 				</div>\
 				</div>");
+
+
+				$('.selecionadoForum').click(function () {
+				
+					alert('Forum')
+				   
+			
+				  });
 
 		}).fail(function (response) { 
 			console.log(response);

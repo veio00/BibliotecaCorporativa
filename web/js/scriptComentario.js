@@ -1,4 +1,10 @@
+$(document).ready(function () {
+  
+
+});
+
 $(function(){
+
   var inDexValue;
   
     $('button').click( function() {
@@ -35,3 +41,5 @@ $(function(){
     
   });
   });
+
+
